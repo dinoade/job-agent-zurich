@@ -20,15 +20,19 @@ Ogni nuovo annuncio che passa i filtri genera una notifica push sul telefono via
    Buona copertura per banche private, gestori patrimoniali e assicurazioni piccole/medie
    che pubblicano su jobs.ch.
 
-**2. Controllo diretto delle grandi banche multinazionali** (eseguito dalla routine cloud
-   stessa, non da uno script — vedi sotto)
-   UBS, Deutsche Bank, Goldman Sachs, JPMorgan, Morgan Stanley, HSBC, Citi, Barclays,
-   Bank of America, Zurich Insurance Group e Swiss Re (lista in `config/major_banks.json`)
-   quasi sempre **non** pubblicano sui portali aggregatori svizzeri: i graduate/analyst
-   program li trovi solo sul loro portale proprietario (spesso Workday/Taleo, difficile da
-   raschiare in modo affidabile). Per questi, la routine cloud usa le sue capacità di
-   ricerca web ad ogni esecuzione, confronta con `state/major_banks_seen.json` e notifica
-   i nuovi annunci allo stesso modo.
+**2. Controllo diretto del sito careers ufficiale** (eseguito dalla routine cloud stessa,
+   non da uno script — vedi sotto)
+   Tutte le 76 URL careers uniche verificate e funzionanti (lista in
+   `config/direct_check_companies.json`, derivata dall'audit dell'11 agosto 2026 su tutte
+   le 114 aziende) vengono controllate direttamente ad ogni esecuzione, non solo via
+   jobs.ch: molte banche/assicurazioni non pubblicano affatto sugli aggregatori svizzeri,
+   i loro annunci esistono solo sul portale proprietario (spesso Workday/Taleo/SuccessFactors,
+   difficile da raschiare in modo affidabile con uno script). Per questi, la routine cloud
+   usa le sue capacità di ricerca web ad ogni esecuzione, confronta con
+   `state/direct_check_seen.json` e notifica i nuovi annunci allo stesso modo. Il tracking
+   dello stato è per-azienda: se aggiungi una nuova azienda alla lista, la prima volta che
+   viene controllata i suoi annunci correnti vengono solo salvati come baseline (nessuno
+   spam), esattamente come succede per l'intero sistema al primo avvio.
 
 **Prima esecuzione**: non invia notifiche per ogni annuncio già aperto (sarebbero decine),
 imposta solo una baseline. Da lì in poi vengono segnalati solo gli annunci genuinamente
@@ -62,8 +66,11 @@ git push -u origin main
 
 Una routine cloud di Claude Code gira ogni 6 ore, indipendentemente dal fatto che il tuo
 Mac sia acceso: esegue `scripts/check_jobs.py` (sweep jobs.ch) e poi controlla direttamente
-i portali delle grandi banche in `config/major_banks.json`. Creata una volta sola tramite
+le 76 URL careers in `config/direct_check_companies.json`. Creata una volta sola tramite
 `/schedule` — gestibile/visibile su https://claude.ai/code/routines.
+
+Nota: controllare 76 siti eterogenei via ricerca web richiede molto più tempo di sweep
+jobs.ch (pochi secondi) — aspettati esecuzioni di diversi minuti (potenzialmente 15-25).
 
 ## Modificare i filtri
 
@@ -93,17 +100,19 @@ azienda in `config/companies.json` ha ora i campi `careers_url`, `careers_status
 - **0 link rotti** rimasti (l'unico trovato, Goldman Sachs `careers.gs.com`, è già stato
   corretto in `goldmansachs.com/careers`).
 
-Nota: questi campi sono per ora solo di riferimento/trasparenza — lo script
-`check_jobs.py` continua a usare jobs.ch per tutte le 114, e la routine controlla
-direttamente solo le 11 aziende in `config/major_banks.json`. Estendere il controllo
-diretto a tutte le 84 con sito verificato è possibile ma appesantirebbe molto ogni
-esecuzione (siti eterogenei, molti richiedono parsing dedicato) — da valutare se serve.
+Questi URL sono stati usati per generare `config/direct_check_companies.json` (76 URL
+uniche dopo deduplica — alcune aziende dello stesso gruppo condividono lo stesso portale,
+es. le tre entità Zurich Insurance o UBS AG/UBS Switzerland AG), controllate direttamente
+dalla routine cloud ad ogni esecuzione oltre allo sweep jobs.ch.
 
 ## Limiti noti
 
-- jobs.ch è l'unica fonte per ora — copre la maggior parte delle aziende svizzere incluse
-  le piccole succursali bancarie, ma non garantisce il 100% degli annunci pubblicati
-  (alcune grandi banche pubblicano anche su portali propri con sistemi ATS diversi, es.
-  Workday/SuccessFactors — integrabili in futuro se serve maggiore copertura).
-- Il matching azienda→annuncio è basato su parole chiave estratte dal nome legale; in rari
-  casi può includere falsi positivi (mitigato dal filtro ruolo+luogo).
+- Le 30 aziende senza sito careers dedicato (vedi audit sopra) restano coperte solo da
+  jobs.ch — se in futuro attivano un portale proprio va aggiunto a mano a
+  `config/direct_check_companies.json`.
+- Il controllo diretto dei 76 siti si basa sul ragionamento/ricerca web della routine
+  cloud, non su parsing strutturato: più robusto ai cambi di struttura del sito rispetto a
+  uno scraper scritto a mano, ma meno deterministico — è possibile occasionalmente perdere
+  o segnalare in ritardo qualche annuncio.
+- Il matching azienda→annuncio nello sweep jobs.ch è basato su parole chiave estratte dal
+  nome legale; in rari casi può includere falsi positivi (mitigato dal filtro ruolo+luogo).
