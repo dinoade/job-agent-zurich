@@ -1,7 +1,7 @@
 [
   {"name": "UBS", "careers_domain": "jobs.ubs.com"},
   {"name": "Deutsche Bank", "careers_domain": "careers.db.com"},
-  {"name": "Goldman Sachs", "careers_domain": "careers.gs.com"},
+  {"name": "Goldman Sachs", "careers_domain": "goldmansachs.com/careers"},
   {"name": "JPMorgan Chase", "careers_domain": "careers.jpmorgan.com"},
   {"name": "Morgan Stanley", "careers_domain": "morganstanley.com/careers"},
   {"name": "HSBC", "careers_domain": "mycareer.hsbc.com"},
