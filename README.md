@@ -8,69 +8,72 @@ finanziarie configurate in [config/companies.json](config/companies.json), filtr
 - **Luogo** (config/settings.json → `location_keywords` / `canton_filter`): Canton Zurigo
   (copre Zurigo città, dintorni e Winterthur).
 
-Ogni nuovo annuncio che passa i filtri genera una notifica push sul telefono via
-[ntfy.sh](https://ntfy.sh) e viene registrato in `state/matches_log.md`.
+## Come funziona (due canali complementari, su due infrastrutture diverse)
 
-## Come funziona (due canali complementari)
+Le routine cloud di Claude Code (CCR) hanno rete in uscita ristretta (solo
+github.com read + gli strumenti nativi WebSearch/WebFetch; jobs.ch e ntfy.sh sono
+bloccati) e — al momento — nessuna scrittura sul repo GitHub anche se collegato. Per
+questo il sistema è diviso su due infrastrutture con caratteristiche complementari:
 
-**1. Sweep automatico via jobs.ch** (`scripts/check_jobs.py`, deterministico)
-   Interroga jobs.ch una volta per ognuna delle 114 aziende in `config/companies.json`
-   (dati strutturati incorporati nella pagina, niente browser headless), filtra per
-   azienda / ruolo / luogo, confronta con `state/seen.json` e notifica i nuovi annunci.
-   Buona copertura per banche private, gestori patrimoniali e assicurazioni piccole/medie
-   che pubblicano su jobs.ch.
+**1. Sweep via jobs.ch → GitHub Actions** (`scripts/check_jobs.py`, deterministico)
+   Gira su GitHub Actions (internet libero, scrittura nativa sul repo via
+   `GITHUB_TOKEN`), ogni 6 ore. Interroga jobs.ch una volta per ognuna delle 114
+   aziende in `config/companies.json`, filtra per azienda/ruolo/luogo, confronta con
+   `state/seen.json`, invia notifica push via **ntfy.sh** per i nuovi annunci e
+   registra tutto in `state/matches_log.md`. Solo i nuovi annunci notificano — stato
+   persistente affidabile.
 
-**2. Controllo diretto del sito careers ufficiale** (eseguito dalla routine cloud stessa,
-   non da uno script — vedi sotto)
-   Tutte le 76 URL careers uniche verificate e funzionanti (lista in
-   `config/direct_check_companies.json`, derivata dall'audit dell'11 agosto 2026 su tutte
-   le 114 aziende) vengono controllate direttamente ad ogni esecuzione, non solo via
-   jobs.ch: molte banche/assicurazioni non pubblicano affatto sugli aggregatori svizzeri,
-   i loro annunci esistono solo sul portale proprietario (spesso Workday/Taleo/SuccessFactors,
-   difficile da raschiare in modo affidabile con uno script). Per questi, la routine cloud
-   usa le sue capacità di ricerca web ad ogni esecuzione, confronta con
-   `state/direct_check_seen.json` e notifica i nuovi annunci allo stesso modo. Il tracking
-   dello stato è per-azienda: se aggiungi una nuova azienda alla lista, la prima volta che
-   viene controllata i suoi annunci correnti vengono solo salvati come baseline (nessuno
-   spam), esattamente come succede per l'intero sistema al primo avvio.
-
-**Prima esecuzione**: non invia notifiche per ogni annuncio già aperto (sarebbero decine),
-imposta solo una baseline. Da lì in poi vengono segnalati solo gli annunci genuinamente
-nuovi.
+**2. Controllo diretto dei siti careers ufficiali → routine cloud Claude Code**
+   Le 76 URL careers uniche verificate (in `config/direct_check_companies.json`,
+   frutto dell'audit dell'11 agosto 2026 su tutte le 114 aziende) vengono controllate
+   ogni 6 ore dalla routine cloud, che usa ricerca/lettura web per gestire portali
+   eterogenei (Workday, Taleo, SuccessFactors...) impossibili da raschiare in modo
+   affidabile con uno script generico. Notifica via lo strumento nativo
+   **PushNotification** di Claude Code (richiede Remote Control collegato — vedi
+   Setup). **Limite noto**: questa routine non può salvare stato tra un'esecuzione e
+   l'altra (git push non funziona in quell'ambiente), quindi ogni notifica elenca
+   *tutti* gli annunci attualmente aperti che corrispondono ai criteri, non solo i
+   nuovi — aspettati qualche ripetizione finché un annuncio resta pubblicato.
 
 ## Setup
 
-### 1. Notifiche push (ntfy.sh)
+### 1. Notifiche push — canale jobs.ch (ntfy.sh)
 
 1. Installa l'app **ntfy** su iOS/Android (gratuita, nessuna registrazione).
 2. Nell'app, aggiungi come "subscription" questo topic (tienilo segreto, funge da password):
    ```
    zh-jobs-65f1990be081
    ```
-3. Fatto: ogni notifica inviata a quel topic arriva sul telefono.
 
-### 2. Repository GitHub
+### 2. Notifiche push — canale controllo diretto (Remote Control)
 
-Questo progetto deve vivere in un repo GitHub (privato consigliato) perché la routine
-cloud legge il codice da lì:
+1. Installa l'app **Claude** ufficiale (App Store / Play Store) e accedi con lo stesso
+   account che usi per Claude Code.
+2. Accetta il permesso di notifiche del sistema operativo.
+3. Nel terminale Claude Code: `/config` → attiva "Push when Claude decides".
+4. Avvia una sessione remota: `claude remote-control` (una tantum, poi resta collegato).
+
+### 3. Repository GitHub
 
 ```bash
 cd ~/job-agent-zurich
-gh repo create job-agent-zurich --private --source=. --push
-# oppure, senza gh cli: crea un repo vuoto su github.com, poi:
+gh repo create job-agent-zurich --public --source=. --push
+# oppure, senza gh cli: crea un repo su github.com, poi:
 git remote add origin https://github.com/<tuo-utente>/job-agent-zurich.git
 git push -u origin main
 ```
 
-### 3. Routine schedulata
+Nota: il repo deve essere accessibile in lettura dalla routine cloud (GitHub collegato
+su claude.ai/customize/connectors) e in scrittura da GitHub Actions (automatico via
+`GITHUB_TOKEN`, nessun setup aggiuntivo necessario).
 
-Una routine cloud di Claude Code gira ogni 6 ore, indipendentemente dal fatto che il tuo
-Mac sia acceso: esegue `scripts/check_jobs.py` (sweep jobs.ch) e poi controlla direttamente
-le 76 URL careers in `config/direct_check_companies.json`. Creata una volta sola tramite
-`/schedule` — gestibile/visibile su https://claude.ai/code/routines.
+### 4. Attivare i due scheduler
 
-Nota: controllare 76 siti eterogenei via ricerca web richiede molto più tempo di sweep
-jobs.ch (pochi secondi) — aspettati esecuzioni di diversi minuti (potenzialmente 15-25).
+- **GitHub Actions**: si attiva da solo appena il file
+  [.github/workflows/check-jobs.yml](.github/workflows/check-jobs.yml) è nel repo su
+  GitHub (branch `main`) — verificabile nella tab "Actions" del repo.
+- **Routine cloud**: creata una volta sola tramite `/schedule` — gestibile/visibile su
+  https://claude.ai/code/routines.
 
 ## Modificare i filtri
 
@@ -78,6 +81,7 @@ jobs.ch (pochi secondi) — aspettati esecuzioni di diversi minuti (potenzialmen
   `python3 scripts/build_companies_config.py`.
 - **Parole chiave ruolo**: modifica `role_keywords` in `config/settings.json`.
 - **Luoghi**: modifica `location_keywords` / `canton_filter` in `config/settings.json`.
+- **Siti careers diretti**: modifica `config/direct_check_companies.json`.
 
 ## Test locale
 
@@ -102,17 +106,14 @@ azienda in `config/companies.json` ha ora i campi `careers_url`, `careers_status
 
 Questi URL sono stati usati per generare `config/direct_check_companies.json` (76 URL
 uniche dopo deduplica — alcune aziende dello stesso gruppo condividono lo stesso portale,
-es. le tre entità Zurich Insurance o UBS AG/UBS Switzerland AG), controllate direttamente
-dalla routine cloud ad ogni esecuzione oltre allo sweep jobs.ch.
+es. le tre entità Zurich Insurance o UBS AG/UBS Switzerland AG).
 
 ## Limiti noti
 
-- Le 30 aziende senza sito careers dedicato (vedi audit sopra) restano coperte solo da
-  jobs.ch — se in futuro attivano un portale proprio va aggiunto a mano a
+- Le 30 aziende senza sito careers dedicato restano coperte solo da jobs.ch — se in
+  futuro attivano un portale proprio va aggiunto a mano a
   `config/direct_check_companies.json`.
-- Il controllo diretto dei 76 siti si basa sul ragionamento/ricerca web della routine
-  cloud, non su parsing strutturato: più robusto ai cambi di struttura del sito rispetto a
-  uno scraper scritto a mano, ma meno deterministico — è possibile occasionalmente perdere
-  o segnalare in ritardo qualche annuncio.
+- Il controllo diretto dei 76 siti (canale 2) non ha stato persistente: notifica sempre
+  tutti gli annunci correnti, non solo i nuovi (vedi sopra).
 - Il matching azienda→annuncio nello sweep jobs.ch è basato su parole chiave estratte dal
   nome legale; in rari casi può includere falsi positivi (mitigato dal filtro ruolo+luogo).
