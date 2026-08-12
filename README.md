@@ -79,6 +79,26 @@ cd ~/job-agent-zurich
 NTFY_TOPIC="zh-jobs-65f1990be081" python3 scripts/check_jobs.py
 ```
 
+## Verifica siti careers (2026-08-12)
+
+Tutte le 114 aziende sono state controllate individualmente: ricerca del sito careers
+ufficiale + verifica che risponda davvero (non un dominio morto/pagina di errore). Ogni
+azienda in `config/companies.json` ha ora i campi `careers_url`, `careers_status`
+(`OK` / `NO_DEDICATED_SITE`) e `careers_note`.
+
+- **84 aziende**: sito careers diretto verificato e funzionante (proprio o del gruppo).
+- **30 aziende**: nessuna pagina careers dedicata trovata — quasi sempre piccole
+  succursali di booking/legal senza staff locale che assume; coperte comunque dal sweep
+  jobs.ch, che è l'unico posto dove potrebbero comunque comparire annunci.
+- **0 link rotti** rimasti (l'unico trovato, Goldman Sachs `careers.gs.com`, è già stato
+  corretto in `goldmansachs.com/careers`).
+
+Nota: questi campi sono per ora solo di riferimento/trasparenza — lo script
+`check_jobs.py` continua a usare jobs.ch per tutte le 114, e la routine controlla
+direttamente solo le 11 aziende in `config/major_banks.json`. Estendere il controllo
+diretto a tutte le 84 con sito verificato è possibile ma appesantirebbe molto ogni
+esecuzione (siti eterogenei, molti richiedono parsing dedicato) — da valutare se serve.
+
 ## Limiti noti
 
 - jobs.ch è l'unica fonte per ora — copre la maggior parte delle aziende svizzere incluse
