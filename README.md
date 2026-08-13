@@ -30,10 +30,17 @@ questo il sistema è diviso su due infrastrutture con caratteristiche complement
    eterogenei (Workday, Taleo, SuccessFactors...) impossibili da raschiare in modo
    affidabile con uno script generico. Notifica via lo strumento nativo
    **PushNotification** di Claude Code (richiede Remote Control collegato — vedi
-   Setup). **Limite noto**: questa routine non può salvare stato tra un'esecuzione e
-   l'altra (git push non funziona in quell'ambiente), quindi ogni notifica elenca
-   *tutti* gli annunci attualmente aperti che corrispondono ai criteri, non solo i
-   nuovi — aspettati qualche ripetizione finché un annuncio resta pubblicato.
+   Setup). **Limite confermato** (testato: push su `main`, push su branch `claude/*`,
+   tool MCP GitHub — tutti bloccati con 403): questa routine non può salvare stato né
+   scrivere nel repo da quell'ambiente. Di conseguenza:
+   - Ogni notifica elenca gli annunci *attualmente aperti*, non solo i nuovi —
+     aspettati ripetizioni finché un annuncio resta pubblicato.
+   - Una notifica push ha un limite fisso di ~200 caratteri: se i risultati non ci
+     stanno tutti, la routine invia solo i più rilevanti (priorità: graduate/analyst
+     program → internship/praktikum → risk/audit/compliance → asset/wealth
+     management → resto), non l'elenco completo. Il dettaglio completo di ogni run
+     resta visibile solo aprendo la sessione su
+     https://claude.ai/code/routines/trig_018hj6Lc29qPW2nLttzu3Ngs.
 
 ## Setup
 
