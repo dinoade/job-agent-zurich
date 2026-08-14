@@ -25,8 +25,11 @@ questo il sistema è diviso su due infrastrutture con caratteristiche complement
    `GITHUB_TOKEN`), ogni 6 ore. Interroga jobs.ch una volta per ognuna delle 114
    aziende in `config/companies.json`, filtra per azienda/ruolo/luogo, confronta con
    `state/seen.json`, invia notifica push via **ntfy.sh** per i nuovi annunci e
-   registra tutto in `state/matches_log.md`. Solo i nuovi annunci notificano — stato
-   persistente affidabile.
+   registra tutto in `state/matches_log.md` (log storico, solo aggiunte). Solo i nuovi
+   annunci notificano — stato persistente affidabile. Ad ogni run rigenera anche
+   [`state/positions.txt`](state/positions.txt): elenco completo e leggibile di
+   *tutte* le posizioni attualmente trovate (azienda, titolo, luogo, link), sempre
+   aggiornato — non un log storico, ma la lista corrente.
 
 **2. Controllo diretto dei siti careers + LinkedIn + Indeed + JobLeads → routine cloud**
    Le 76 URL careers uniche verificate (in `config/direct_check_companies.json`,

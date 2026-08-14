@@ -23,6 +23,7 @@ COMPANIES_FILE = ROOT / "config" / "companies.json"
 SETTINGS_FILE = ROOT / "config" / "settings.json"
 STATE_FILE = ROOT / "state" / "seen.json"
 LOG_FILE = ROOT / "state" / "matches_log.md"
+POSITIONS_FILE = ROOT / "state" / "positions.txt"
 
 HEADERS = {
     "User-Agent": (
@@ -134,6 +135,21 @@ def send_ntfy(topic: str, title: str, message: str, click_url: str = None, prior
         print(f"WARN: invio notifica ntfy fallito: {e}", file=sys.stderr)
 
 
+def write_positions_txt(seen: dict, generated_at: str):
+    entries = sorted(seen.values(), key=lambda m: m.get("seen_at", ""), reverse=True)
+    lines = [
+        f"Job Agent Zurigo - posizioni trovate su jobs.ch (aggiornato {generated_at})",
+        f"Totale: {len(entries)}",
+        "",
+    ]
+    for m in entries:
+        lines.append(f"{m.get('company', '')} - {m.get('title', '')} ({m.get('place', '')})")
+        lines.append(f"  {m.get('url', '')}")
+        lines.append("")
+    POSITIONS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    POSITIONS_FILE.write_text("\n".join(lines), encoding="utf-8")
+
+
 def main():
     companies = json.loads(COMPANIES_FILE.read_text(encoding="utf-8"))
     settings = json.loads(SETTINGS_FILE.read_text(encoding="utf-8"))
@@ -170,17 +186,20 @@ def main():
             if not job_id:
                 continue
 
+            url = f"https://www.jobs.ch/en/vacancies/detail/{job_id}/"
             if job_id not in seen:
                 new_matches.append({
                     "id": job_id,
                     "title": job.get("title", ""),
                     "company": company["full_name"],
                     "place": job.get("place", ""),
-                    "url": f"https://www.jobs.ch/en/vacancies/detail/{job_id}/",
+                    "url": url,
                 })
             seen[job_id] = {
                 "title": job.get("title", ""),
                 "company": company["full_name"],
+                "place": job.get("place", ""),
+                "url": url,
                 "seen_at": seen.get(job_id, {}).get("seen_at", now_iso),
             }
 
@@ -188,6 +207,8 @@ def main():
 
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     STATE_FILE.write_text(json.dumps(seen, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    write_positions_txt(seen, now_iso)
 
     if is_first_run:
         print(f"Baseline impostata: {len(new_matches)} annunci correnti registrati (nessuna notifica inviata).")
