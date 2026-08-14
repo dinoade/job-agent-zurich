@@ -136,15 +136,17 @@ def send_ntfy(topic: str, title: str, message: str, click_url: str = None, prior
 
 
 def write_positions_txt(seen: dict, generated_at: str):
-    entries = sorted(seen.values(), key=lambda m: m.get("seen_at", ""), reverse=True)
+    entries = sorted(seen.items(), key=lambda kv: kv[1].get("seen_at", ""), reverse=True)
     lines = [
         f"Job Agent Zurigo - posizioni trovate su jobs.ch (aggiornato {generated_at})",
         f"Totale: {len(entries)}",
         "",
     ]
-    for m in entries:
-        lines.append(f"{m.get('company', '')} - {m.get('title', '')} ({m.get('place', '')})")
-        lines.append(f"  {m.get('url', '')}")
+    for job_id, m in entries:
+        url = m.get("url") or f"https://www.jobs.ch/en/vacancies/detail/{job_id}/"
+        place = m.get("place") or "n/d"
+        lines.append(f"{m.get('company', '')} - {m.get('title', '')} ({place})")
+        lines.append(f"  {url}")
         lines.append("")
     POSITIONS_FILE.parent.mkdir(parents=True, exist_ok=True)
     POSITIONS_FILE.write_text("\n".join(lines), encoding="utf-8")
