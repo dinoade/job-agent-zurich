@@ -30,3 +30,4 @@
 - [2026-08-14T15:17:09.490457+00:00] **Senior Compliance Officer** — Crypto Finance AG (Zürich) — https://www.jobs.ch/en/vacancies/detail/f0f169e4-d164-4932-bb1e-b3f9351e8bc2/
 - [2026-08-14T15:17:09.490457+00:00] **Trading Intern** — Crypto Finance AG (Zürich) — https://www.jobs.ch/en/vacancies/detail/c7d62dbb-fba9-4437-90f1-ee0d2fce4930/
 - [2026-08-14T15:17:09.490457+00:00] **Intern - Application Management** — Crypto Finance AG (Zurich) — https://www.jobs.ch/en/vacancies/detail/bd85d493-c240-4ffa-84c0-cbe6ff283543/
+- [2026-08-14T16:49:52.730621+00:00] **Praktikum Bankeinstieg nach Matura (BEM)** — Zuger Kantonalbank (Zug) — https://www.jobs.ch/en/vacancies/detail/24e782e1-e9a2-44a8-b1fa-b93b84538f80/
