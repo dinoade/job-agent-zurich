@@ -152,6 +152,28 @@ def write_positions_txt(seen: dict, generated_at: str):
     POSITIONS_FILE.write_text("\n".join(lines), encoding="utf-8")
 
 
+def prune_stale_entries(seen: dict, settings: dict) -> dict:
+    """Rimuove dallo stato salvato le voci che non rispettano piu' i filtri attuali
+    (es. aggiunte prima che un filtro fosse introdotto/modificato)."""
+    kept = {}
+    for job_id, m in seen.items():
+        title = norm(m.get("title", ""))
+        role_ok = any(
+            re.search(r"\b" + re.escape(norm(kw)) + r"\b", title)
+            for kw in settings["role_keywords"]
+        )
+        excluded = any(
+            re.search(r"\b" + re.escape(norm(kw)) + r"\b", title)
+            for kw in settings.get("exclude_keywords", [])
+        )
+        if role_ok and not excluded:
+            kept[job_id] = m
+    removed = len(seen) - len(kept)
+    if removed:
+        print(f"Pulizia stato: rimosse {removed} voci che non rispettano piu' i filtri attuali.")
+    return kept
+
+
 def main():
     companies = json.loads(COMPANIES_FILE.read_text(encoding="utf-8"))
     settings = json.loads(SETTINGS_FILE.read_text(encoding="utf-8"))
@@ -161,6 +183,7 @@ def main():
     is_first_run = not STATE_FILE.exists()
     if not is_first_run:
         seen = json.loads(STATE_FILE.read_text(encoding="utf-8"))
+        seen = prune_stale_entries(seen, settings)
 
     new_matches = []
     errors = []
