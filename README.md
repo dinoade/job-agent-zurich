@@ -3,8 +3,10 @@
 Monitora automaticamente le offerte di lavoro nelle ~114 banche/assicurazioni/aziende
 finanziarie configurate in [config/companies.json](config/companies.json), filtrati per:
 
-- **Ruolo** (config/settings.json → `role_keywords`): graduate, analyst, trainee, risk,
-  audit, controlling, compliance, asset/wealth management, praktikum/internship.
+- **Ruolo** (config/settings.json → `role_keywords`, obbligatorie): intern, internship,
+  praktikum, praktikant, praktikant:in, praktikantin — solo stage/internship.
+- **Esclusioni** (config/settings.json → `exclude_keywords`): scarta il titolo se contiene
+  senior, hr, human resources, ib, investment banking — anche se soddisfa il filtro ruolo.
 - **Luogo** (config/settings.json → `location_keywords` / `canton_filter`): Canton Zurigo
   (copre Zurigo città, dintorni e Winterthur).
 
