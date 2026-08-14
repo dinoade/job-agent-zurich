@@ -1,17 +1,20 @@
 {
   "ntfy_topic": "zh-jobs-65f1990be081",
-  "canton_filter": ["ZH"],
+  "canton_filter": ["ZH", "ZG", "SH", "AG", "SG"],
   "location_keywords": [
     "zürich", "zurich", "winterthur", "opfikon", "wallisellen", "kloten",
     "dübendorf", "dietikon", "schlieren", "regensdorf", "adliswil",
-    "thalwil", "küsnacht", "glattpark", "flughafen"
+    "thalwil", "küsnacht", "glattpark", "flughafen",
+    "zug", "schaffhausen", "baden", "st. gallen", "st.gallen", "sankt gallen",
+    "aarau", "frauenfeld", "rapperswil", "wil"
   ],
   "role_keywords": [
     "intern", "internship", "praktikum", "praktikant", "praktikant:in",
     "praktikantin"
   ],
   "exclude_keywords": [
-    "senior", "hr", "human resources", "ib", "investment banking"
+    "senior", "hr", "human resources", "ib", "investment banking",
+    "it", "energy", "robotics", "marketing", "ml"
   ],
   "request_delay_seconds": 0.8
 }
