@@ -6,9 +6,12 @@ finanziarie configurate in [config/companies.json](config/companies.json), filtr
 - **Ruolo** (config/settings.json → `role_keywords`, obbligatorie): intern, internship,
   praktikum, praktikant, praktikant:in, praktikantin — solo stage/internship.
 - **Esclusioni** (config/settings.json → `exclude_keywords`): scarta il titolo se contiene
-  senior, hr, human resources, ib, investment banking — anche se soddisfa il filtro ruolo.
-- **Luogo** (config/settings.json → `location_keywords` / `canton_filter`): Canton Zurigo
-  (copre Zurigo città, dintorni e Winterthur).
+  senior, hr, human resources, ib, investment banking, it, energy, robotics, marketing,
+  ml — anche se soddisfa il filtro ruolo.
+- **Luogo** (config/settings.json → `location_keywords` / `canton_filter`): cantoni ZH,
+  ZG, SH, AG, SG — Zurigo città e dintorni, Zugo, Sciaffusa, Baden, San Gallo e zone
+  limitrofe (~1h di treno da Winterthur). Filtro a livello di cantone: in casi rari può
+  includere località di quel cantone più lontane di 1h (es. Aargau occidentale).
 
 ## Come funziona (due canali complementari, su due infrastrutture diverse)
 
@@ -25,12 +28,15 @@ questo il sistema è diviso su due infrastrutture con caratteristiche complement
    registra tutto in `state/matches_log.md`. Solo i nuovi annunci notificano — stato
    persistente affidabile.
 
-**2. Controllo diretto dei siti careers ufficiali → routine cloud Claude Code**
+**2. Controllo diretto dei siti careers ufficiali + LinkedIn → routine cloud Claude Code**
    Le 76 URL careers uniche verificate (in `config/direct_check_companies.json`,
    frutto dell'audit dell'11 agosto 2026 su tutte le 114 aziende) vengono controllate
    ogni 6 ore dalla routine cloud, che usa ricerca/lettura web per gestire portali
    eterogenei (Workday, Taleo, SuccessFactors...) impossibili da raschiare in modo
-   affidabile con uno script generico. Notifica via lo strumento nativo
+   affidabile con uno script generico. In aggiunta, la routine fa alcune ricerche
+   mirate su LinkedIn (solo tramite WebSearch, mai fetch diretto — raschiare LinkedIn
+   viola i loro termini di servizio) e **deduplica** i risultati tra le due fonti se
+   la stessa posizione compare su entrambe. Notifica via lo strumento nativo
    **PushNotification** di Claude Code (richiede Remote Control collegato — vedi
    Setup). **Limite confermato** (testato: push su `main`, push su branch `claude/*`,
    tool MCP GitHub — tutti bloccati con 403): questa routine non può salvare stato né
@@ -38,11 +44,14 @@ questo il sistema è diviso su due infrastrutture con caratteristiche complement
    - Ogni notifica elenca gli annunci *attualmente aperti*, non solo i nuovi —
      aspettati ripetizioni finché un annuncio resta pubblicato.
    - Una notifica push ha un limite fisso di ~200 caratteri: se i risultati non ci
-     stanno tutti, la routine invia solo i più rilevanti (priorità: graduate/analyst
-     program → internship/praktikum → risk/audit/compliance → asset/wealth
-     management → resto), non l'elenco completo. Il dettaglio completo di ogni run
-     resta visibile solo aprendo la sessione su
+     stanno tutti, la routine invia solo i più rilevanti, non l'elenco completo. Il
+     dettaglio completo di ogni run resta visibile solo aprendo la sessione su
      https://claude.ai/code/routines/trig_018hj6Lc29qPW2nLttzu3Ngs.
+
+   **Altri siti valutati e scartati** (14 agosto 2026): indeed.ch blocca lo scraping
+   con Cloudflare (403); jobleads.com richiede login per risultati reali (servizio di
+   lead-gen, non un job board pubblico); studysmart.ch è un sito di consulenza per
+   studiare all'estero, non un job board (probabile omonimo non pertinente).
 
 ## Setup
 
