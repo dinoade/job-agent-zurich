@@ -7,12 +7,11 @@
     "thalwil", "küsnacht", "glattpark", "flughafen"
   ],
   "role_keywords": [
-    "graduate", "trainee", "analyst", "junior", "entry level", "entry-level",
-    "praktikant", "praktikum", "praktikantin", "intern", "internship",
-    "stagiaire", "stage", "risk", "audit", "revisor", "revision",
-    "controlling", "controller", "compliance", "asset management",
-    "vermögensverwaltung", "wealth management", "private banking",
-    "portfolio management", "portfoliomanagement"
+    "intern", "internship", "praktikum", "praktikant", "praktikant:in",
+    "praktikantin"
+  ],
+  "exclude_keywords": [
+    "senior", "hr", "human resources", "ib", "investment banking"
   ],
   "request_delay_seconds": 0.8
 }

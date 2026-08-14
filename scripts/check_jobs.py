@@ -109,6 +109,14 @@ def role_matches(job: dict, settings: dict) -> bool:
     return False
 
 
+def role_excluded(job: dict, settings: dict) -> bool:
+    title = norm(job.get("title", ""))
+    for kw in settings.get("exclude_keywords", []):
+        if re.search(r"\b" + re.escape(norm(kw)) + r"\b", title):
+            return True
+    return False
+
+
 def send_ntfy(topic: str, title: str, message: str, click_url: str = None, priority: str = "default"):
     if not topic:
         print("WARN: nessun NTFY_TOPIC configurato, notifica saltata.", file=sys.stderr)
@@ -154,6 +162,8 @@ def main():
             if not location_matches(job, settings):
                 continue
             if not role_matches(job, settings):
+                continue
+            if role_excluded(job, settings):
                 continue
 
             job_id = job.get("id")
