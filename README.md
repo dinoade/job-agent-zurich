@@ -139,5 +139,11 @@ es. le tre entità Zurich Insurance o UBS AG/UBS Switzerland AG).
   `config/direct_check_companies.json`.
 - Il controllo diretto dei 76 siti (canale 2) non ha stato persistente: notifica sempre
   tutti gli annunci correnti, non solo i nuovi (vedi sopra).
+- Il canale 2 si basa sul ragionamento della routine cloud, non su parsing strutturato:
+  può occasionalmente segnalare un **falso positivo** (annuncio inesistente/scaduto,
+  osservato una volta con Globalance il 14 agosto 2026). Il prompt richiede ora che
+  ogni annuncio sia riconducibile a un URL reale visto nella run corrente per ridurre
+  il rischio, ma non lo elimina del tutto — verifica sempre sul sito prima di
+  candidarti.
 - Il matching azienda→annuncio nello sweep jobs.ch è basato su parole chiave estratte dal
   nome legale; in rari casi può includere falsi positivi (mitigato dal filtro ruolo+luogo).
