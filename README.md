@@ -28,19 +28,27 @@ questo il sistema è diviso su due infrastrutture con caratteristiche complement
    registra tutto in `state/matches_log.md`. Solo i nuovi annunci notificano — stato
    persistente affidabile.
 
-**2. Controllo diretto dei siti careers ufficiali + LinkedIn → routine cloud Claude Code**
+**2. Controllo diretto dei siti careers + LinkedIn + Indeed + JobLeads → routine cloud**
    Le 76 URL careers uniche verificate (in `config/direct_check_companies.json`,
    frutto dell'audit dell'11 agosto 2026 su tutte le 114 aziende) vengono controllate
    ogni 6 ore dalla routine cloud, che usa ricerca/lettura web per gestire portali
    eterogenei (Workday, Taleo, SuccessFactors...) impossibili da raschiare in modo
-   affidabile con uno script generico. In aggiunta, la routine fa alcune ricerche
-   mirate su LinkedIn (solo tramite WebSearch, mai fetch diretto — raschiare LinkedIn
-   viola i loro termini di servizio) e **deduplica** i risultati tra le due fonti se
-   la stessa posizione compare su entrambe. Notifica via lo strumento nativo
-   **PushNotification** di Claude Code (richiede Remote Control collegato — vedi
-   Setup). **Limite confermato** (testato: push su `main`, push su branch `claude/*`,
-   tool MCP GitHub — tutti bloccati con 403): questa routine non può salvare stato né
-   scrivere nel repo da quell'ambiente. Di conseguenza:
+   affidabile con uno script generico. In aggiunta, la routine copre tre aggregatori:
+   - **LinkedIn**: solo tramite WebSearch (`site:linkedin.com/jobs ...`), mai fetch
+     diretto — raschiare LinkedIn viola i loro termini di servizio.
+   - **Indeed.ch**: `curl`/richieste dirette vengono bloccate da Cloudflare (403), ma
+     WebFetch su URL di ricerca costruiti (`ch.indeed.com/jobs?q=...&l=...`) funziona
+     bene ed è stato verificato con risultati reali.
+   - **JobLeads.com**: la loro ricerca via URL diretto è rotta/inaffidabile (ignora i
+     parametri), ma le pagine dei singoli annunci sono indicizzate — funziona solo
+     via WebSearch con `site:jobleads.com ...`.
+
+   La routine **deduplica** tra tutte le fonti se la stessa posizione compare più
+   volte. Notifica via lo strumento nativo **PushNotification** di Claude Code
+   (richiede Remote Control collegato — vedi Setup). **Limite confermato** (testato:
+   push su `main`, push su branch `claude/*`, tool MCP GitHub — tutti bloccati con
+   403): questa routine non può salvare stato né scrivere nel repo da quell'ambiente.
+   Di conseguenza:
    - Ogni notifica elenca gli annunci *attualmente aperti*, non solo i nuovi —
      aspettati ripetizioni finché un annuncio resta pubblicato.
    - Una notifica push ha un limite fisso di ~200 caratteri: se i risultati non ci
@@ -48,10 +56,8 @@ questo il sistema è diviso su due infrastrutture con caratteristiche complement
      dettaglio completo di ogni run resta visibile solo aprendo la sessione su
      https://claude.ai/code/routines/trig_018hj6Lc29qPW2nLttzu3Ngs.
 
-   **Altri siti valutati e scartati** (14 agosto 2026): indeed.ch blocca lo scraping
-   con Cloudflare (403); jobleads.com richiede login per risultati reali (servizio di
-   lead-gen, non un job board pubblico); studysmart.ch è un sito di consulenza per
-   studiare all'estero, non un job board (probabile omonimo non pertinente).
+   **Scartato**: studysmart.ch è un sito di consulenza per studiare all'estero, non
+   un job board (probabile omonimo non pertinente — chiarire se serve riconsiderarlo).
 
 ## Setup
 
