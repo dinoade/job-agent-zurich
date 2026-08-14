@@ -1,70 +1,95 @@
 # Job Agent Zurigo
 
-Monitora automaticamente le offerte di lavoro nelle ~114 banche/assicurazioni/aziende
-finanziarie configurate in [config/companies.json](config/companies.json), filtrati per:
+Cerca stage/internship in area Zurigo per un neolaureato in finanza (master UZH),
+divisi su due canali indipendenti:
 
-- **Ruolo** (config/settings.json → `role_keywords`, obbligatorie): intern, internship,
-  praktikum, praktikant, praktikant:in, praktikantin — solo stage/internship.
-- **Esclusioni** (config/settings.json → `exclude_keywords`): scarta il titolo se contiene
-  senior, hr, human resources, ib, investment banking, it, energy, robotics, marketing,
-  ml — anche se soddisfa il filtro ruolo.
-- **Luogo** (config/settings.json → `location_keywords` / `canton_filter`): cantoni ZH,
-  ZG, SH, AG, SG — Zurigo città e dintorni, Zugo, Sciaffusa, Baden, San Gallo e zone
-  limitrofe (~1h di treno da Winterthur). Filtro a livello di cantone: in casi rari può
-  includere località di quel cantone più lontane di 1h (es. Aargau occidentale).
+- **Canale 1 — esterno / tutta la rete**: jobs.ch (ricerca libera, qualsiasi azienda)
+  + LinkedIn + Indeed.ch + JobLeads.com. Nessun filtro di azienda: copre consulenze,
+  aziende piccole, qualsiasi settore.
+- **Canale 2 — diretto**: solo le aziende assegnate all'inizio (114 banche/assicurazioni
+  svizzere), controllate direttamente sui loro siti careers ufficiali.
 
-## Come funziona (due canali complementari, su due infrastrutture diverse)
+Entrambi i canali applicano gli stessi filtri (config/settings.json):
+
+- **Ruolo** (`role_keywords`, obbligatorie): intern, internship, praktikum, praktikant,
+  praktikant:in, praktikantin — solo stage/internship.
+- **Esclusioni** (`exclude_keywords`): scarta il titolo se contiene senior, hr, human
+  resources, ib, investment banking, it, energy, robotics, marketing, ml — anche se
+  soddisfa il filtro ruolo.
+- **Luogo** (`location_keywords` / `canton_filter`): cantoni ZH, ZG, SH, AG, SG —
+  Zurigo città e dintorni, Zugo, Sciaffusa, Baden, San Gallo e zone limitrofe (~1h di
+  treno da Winterthur). Filtro a livello di cantone: in casi rari può includere
+  località di quel cantone più lontane di 1h (es. Aargau occidentale). Nessun filtro
+  di settore oltre a questi — il Canale 1 include stage di qualsiasi ambito.
+
+## Come funziona (due infrastrutture diverse, per limiti tecnici reali)
 
 Le routine cloud di Claude Code (CCR) hanno rete in uscita ristretta (solo
-github.com read + gli strumenti nativi WebSearch/WebFetch; jobs.ch e ntfy.sh sono
-bloccati) e — al momento — nessuna scrittura sul repo GitHub anche se collegato. Per
-questo il sistema è diviso su due infrastrutture con caratteristiche complementari:
+github.com in lettura + gli strumenti nativi WebSearch/WebFetch; jobs.ch e ntfy.sh
+sono bloccati) e — testato più volte, in modi diversi — **nessuna scrittura sul repo
+GitHub**, anche se il repo risulta collegato. Questo divide necessariamente il
+sistema:
 
-**1. Sweep via jobs.ch → GitHub Actions** (`scripts/check_jobs.py`, deterministico)
-   Gira su GitHub Actions (internet libero, scrittura nativa sul repo via
-   `GITHUB_TOKEN`), ogni 6 ore. Interroga jobs.ch una volta per ognuna delle 114
-   aziende in `config/companies.json`, filtra per azienda/ruolo/luogo, confronta con
-   `state/seen.json`, invia notifica push via **ntfy.sh** per i nuovi annunci e
-   registra tutto in `state/matches_log.md` (log storico, solo aggiunte). Solo i nuovi
-   annunci notificano — stato persistente affidabile. Ad ogni run rigenera anche
-   [`state/positions.txt`](state/positions.txt): elenco completo e leggibile di
-   *tutte* le posizioni attualmente trovate (azienda, titolo, luogo, link), sempre
-   aggiornato — non un log storico, ma la lista corrente.
+### Canale 1 — jobs.ch: GitHub Actions, completamente automatico
 
-**2. Controllo diretto dei siti careers + LinkedIn + Indeed + JobLeads → routine cloud**
-   Le 76 URL careers uniche verificate (in `config/direct_check_companies.json`,
-   frutto dell'audit dell'11 agosto 2026 su tutte le 114 aziende) vengono controllate
-   ogni 6 ore dalla routine cloud, che usa ricerca/lettura web per gestire portali
-   eterogenei (Workday, Taleo, SuccessFactors...) impossibili da raschiare in modo
-   affidabile con uno script generico. In aggiunta, la routine copre tre aggregatori:
-   - **LinkedIn**: solo tramite WebSearch (`site:linkedin.com/jobs ...`), mai fetch
-     diretto — raschiare LinkedIn viola i loro termini di servizio.
-   - **Indeed.ch**: `curl`/richieste dirette vengono bloccate da Cloudflare (403), ma
-     WebFetch su URL di ricerca costruiti (`ch.indeed.com/jobs?q=...&l=...`) funziona
-     bene ed è stato verificato con risultati reali.
-   - **JobLeads.com**: la loro ricerca via URL diretto è rotta/inaffidabile (ignora i
-     parametri), ma le pagine dei singoli annunci sono indicizzate — funziona solo
-     via WebSearch con `site:jobleads.com ...`.
+`scripts/check_jobs.py` gira su GitHub Actions (internet libero, scrittura nativa sul
+repo via `GITHUB_TOKEN`) ogni 6 ore. Cerca su jobs.ch con termini liberi (praktikum,
+internship, praktikant...), **non limitato a nessuna lista di aziende** — trova
+qualsiasi datore di lavoro che pubblica lì. Filtra per ruolo/esclusioni/luogo,
+confronta con `state/external_seen.json`, invia notifica push via **ntfy.sh** solo
+per i nuovi annunci, e mantiene due file sempre aggiornati:
 
-   La routine **deduplica** tra tutte le fonti se la stessa posizione compare più
-   volte. Notifica via lo strumento nativo **PushNotification** di Claude Code
-   (richiede Remote Control collegato — vedi Setup). **Limite confermato** (testato:
-   push su `main`, push su branch `claude/*`, tool MCP GitHub — tutti bloccati con
-   403): questa routine non può salvare stato né scrivere nel repo da quell'ambiente.
-   Di conseguenza:
-   - Ogni notifica elenca gli annunci *attualmente aperti*, non solo i nuovi —
-     aspettati ripetizioni finché un annuncio resta pubblicato.
-   - Una notifica push ha un limite fisso di ~200 caratteri: se i risultati non ci
-     stanno tutti, la routine invia solo i più rilevanti, non l'elenco completo. Il
-     dettaglio completo di ogni run resta visibile solo aprendo la sessione su
-     https://claude.ai/code/routines/trig_018hj6Lc29qPW2nLttzu3Ngs.
+- [`state/external_positions.txt`](state/external_positions.txt): elenco leggibile di
+  *tutte* le posizioni attualmente trovate (rigenerato ogni run, non solo le nuove).
+- [`state/external_matches_log.md`](state/external_matches_log.md): log storico,
+  solo aggiunte, con timestamp.
 
-   **Scartato**: studysmart.ch è un sito di consulenza per studiare all'estero, non
-   un job board (probabile omonimo non pertinente — chiarire se serve riconsiderarlo).
+Ad ogni run lo stato salvato viene anche ripulito automaticamente dalle voci che non
+rispettano più i filtri attuali (es. se cambi `exclude_keywords`, le voci ormai
+escluse spariscono dal file invece di restare per sempre).
+
+### Canale 1 (resto) + Canale 2 — routine cloud Claude Code
+
+La stessa routine cloud copre in un'unica esecuzione ogni 6 ore:
+
+- **LinkedIn** (Canale 1): solo tramite WebSearch (`site:linkedin.com/jobs ...`), mai
+  fetch diretto — raschiare LinkedIn viola i loro termini di servizio.
+- **Indeed.ch** (Canale 1): `curl`/richieste dirette bloccate da Cloudflare (403, e il
+  feed RSS non esiste più), ma WebFetch su URL di ricerca costruiti
+  (`ch.indeed.com/jobs?q=...&l=...`) funziona bene — verificato con risultati reali.
+- **JobLeads.com** (Canale 1): la loro ricerca via URL diretto è rotta/inaffidabile
+  (ignora i parametri), ma le pagine dei singoli annunci sono indicizzate — funziona
+  solo via WebSearch con `site:jobleads.com ...`.
+- **Le 76 aziende assegnate** (Canale 2, in
+  [`config/direct_check_companies.json`](config/direct_check_companies.json), frutto
+  dell'audit dell'11 agosto 2026 su tutte le 114 aziende): controllo diretto dei loro
+  siti careers ufficiali, gestisce portali eterogenei (Workday, Taleo,
+  SuccessFactors...) impossibili da raschiare in modo affidabile con uno script.
+
+La routine deduplica tra tutte le fonti se la stessa posizione compare più volte, e
+notifica via lo strumento nativo **PushNotification** di Claude Code (richiede Remote
+Control collegato — vedi Setup).
+
+**Limite confermato** (testato: push su `main`, push su branch `claude/*`, tool MCP
+GitHub — tutti bloccati con 403): questa routine non può salvare stato né scrivere
+file nel repo da quell'ambiente. Di conseguenza:
+
+- Ogni notifica elenca gli annunci *attualmente aperti*, non solo i nuovi —
+  aspettati ripetizioni finché un annuncio resta pubblicato.
+- Una notifica push ha un limite fisso di ~200 caratteri: se i risultati non ci
+  stanno tutti, la routine invia solo i più rilevanti. Il dettaglio completo di ogni
+  run resta visibile aprendo la sessione su
+  https://claude.ai/code/routines/trig_018hj6Lc29qPW2nLttzu3Ngs.
+- **Nessun file .txt automatico** per queste fonti (LinkedIn/Indeed/JobLeads +
+  Canale 2): quando serve, viene generato manualmente rileggendo l'ultima esecuzione
+  della routine e committato nel repo — non è un aggiornamento autonomo ogni 6h.
+
+**Scartato**: studysmart.ch è un sito di consulenza per studiare all'estero, non un
+job board (probabile omonimo non pertinente).
 
 ## Setup
 
-### 1. Notifiche push — canale jobs.ch (ntfy.sh)
+### 1. Notifiche push — Canale 1/jobs.ch (ntfy.sh)
 
 1. Installa l'app **ntfy** su iOS/Android (gratuita, nessuna registrazione).
 2. Nell'app, aggiungi come "subscription" questo topic (tienilo segreto, funge da password):
@@ -72,13 +97,12 @@ questo il sistema è diviso su due infrastrutture con caratteristiche complement
    zh-jobs-65f1990be081
    ```
 
-### 2. Notifiche push — canale controllo diretto (Remote Control)
+### 2. Notifiche push — resto Canale 1 + Canale 2 (Remote Control)
 
 1. Installa l'app **Claude** ufficiale (App Store / Play Store) e accedi con lo stesso
    account che usi per Claude Code.
 2. Accetta il permesso di notifiche del sistema operativo.
-3. Nel terminale Claude Code: `/config` → attiva "Push when Claude decides".
-4. Avvia una sessione remota: `claude remote-control` (una tantum, poi resta collegato).
+3. Nel terminale Claude Code: `/config agentPushNotifEnabled=true remoteControl=true`.
 
 ### 3. Repository GitHub
 
@@ -104,11 +128,12 @@ su claude.ai/customize/connectors) e in scrittura da GitHub Actions (automatico 
 
 ## Modificare i filtri
 
-- **Aggiungere/rimuovere aziende**: modifica `scripts/raw_companies.txt`, poi rigenera con
-  `python3 scripts/build_companies_config.py`.
 - **Parole chiave ruolo**: modifica `role_keywords` in `config/settings.json`.
+- **Esclusioni**: modifica `exclude_keywords` in `config/settings.json`.
 - **Luoghi**: modifica `location_keywords` / `canton_filter` in `config/settings.json`.
-- **Siti careers diretti**: modifica `config/direct_check_companies.json`.
+- **Termini di ricerca jobs.ch (Canale 1)**: modifica `BROAD_SEARCH_TERMS` in
+  `scripts/check_jobs.py`.
+- **Aziende del Canale 2**: modifica `config/direct_check_companies.json`.
 
 ## Test locale
 
@@ -119,34 +144,30 @@ NTFY_TOPIC="zh-jobs-65f1990be081" python3 scripts/check_jobs.py
 
 ## Verifica siti careers (2026-08-12)
 
-Tutte le 114 aziende sono state controllate individualmente: ricerca del sito careers
-ufficiale + verifica che risponda davvero (non un dominio morto/pagina di errore). Ogni
-azienda in `config/companies.json` ha ora i campi `careers_url`, `careers_status`
-(`OK` / `NO_DEDICATED_SITE`) e `careers_note`.
+Le 114 aziende assegnate all'inizio sono state controllate individualmente: ricerca
+del sito careers ufficiale + verifica che risponda davvero (non un dominio morto).
+Risultato usato per costruire il Canale 2 (`config/direct_check_companies.json`, 76
+URL uniche dopo deduplica):
 
 - **84 aziende**: sito careers diretto verificato e funzionante (proprio o del gruppo).
-- **30 aziende**: nessuna pagina careers dedicata trovata — quasi sempre piccole
-  succursali di booking/legal senza staff locale che assume; coperte comunque dal sweep
-  jobs.ch, che è l'unico posto dove potrebbero comunque comparire annunci.
-- **0 link rotti** rimasti (l'unico trovato, Goldman Sachs `careers.gs.com`, è già stato
-  corretto in `goldmansachs.com/careers`).
-
-Questi URL sono stati usati per generare `config/direct_check_companies.json` (76 URL
-uniche dopo deduplica — alcune aziende dello stesso gruppo condividono lo stesso portale,
-es. le tre entità Zurich Insurance o UBS AG/UBS Switzerland AG).
+- **30 aziende**: nessuna pagina careers dedicata trovata — piccole succursali di
+  booking/legal senza staff locale che assume; coperte comunque dal Canale 1.
+- **0 link rotti** rimasti (l'unico trovato, Goldman Sachs `careers.gs.com`, è già
+  stato corretto in `goldmansachs.com/careers`).
 
 ## Limiti noti
 
-- Le 30 aziende senza sito careers dedicato restano coperte solo da jobs.ch — se in
-  futuro attivano un portale proprio va aggiunto a mano a
-  `config/direct_check_companies.json`.
-- Il controllo diretto dei 76 siti (canale 2) non ha stato persistente: notifica sempre
-  tutti gli annunci correnti, non solo i nuovi (vedi sopra).
-- Il canale 2 si basa sul ragionamento della routine cloud, non su parsing strutturato:
-  può occasionalmente segnalare un **falso positivo** (annuncio inesistente/scaduto,
-  osservato una volta con Globalance il 14 agosto 2026). Il prompt richiede ora che
-  ogni annuncio sia riconducibile a un URL reale visto nella run corrente per ridurre
-  il rischio, ma non lo elimina del tutto — verifica sempre sul sito prima di
-  candidarti.
-- Il matching azienda→annuncio nello sweep jobs.ch è basato su parole chiave estratte dal
-  nome legale; in rari casi può includere falsi positivi (mitigato dal filtro ruolo+luogo).
+- Il Canale 1 non ha filtro di settore: include stage di qualsiasi ambito trovati su
+  jobs.ch/LinkedIn/Indeed/JobLeads con le parole chiave configurate, non solo finanza.
+- Le 30 aziende del Canale 2 senza sito careers dedicato non sono coperte da quel
+  canale — compaiono comunque nel Canale 1 se pubblicano su uno degli aggregatori.
+- Canale 2 e le fonti LinkedIn/Indeed/JobLeads del Canale 1 non hanno stato
+  persistente: notificano sempre gli annunci correnti, non solo i nuovi, e non
+  generano un file .txt automatico (vedi sopra).
+- Queste stesse fonti si basano sul ragionamento della routine cloud, non su parsing
+  strutturato: possono occasionalmente segnalare un **falso positivo** (osservato una
+  volta con Globalance il 14 agosto 2026). Il prompt richiede che ogni annuncio sia
+  riconducibile a un URL reale visto nella run corrente, ma non elimina il rischio del
+  tutto — verifica sempre sul sito prima di candidarti.
+- Il matching nel Canale 1/jobs.ch è per parola chiave su titolo/luogo, non per
+  significato: in rari casi può includere falsi positivi.

@@ -1,10 +1,14 @@
-"""Controlla jobs.ch per nuove offerte nelle aziende configurate e notifica via ntfy.sh.
+"""Ricerca libera su jobs.ch (qualsiasi azienda, non solo quelle configurate) e notifica via ntfy.sh.
 
 Uso:
     python3 scripts/check_jobs.py
 
-Legge config/companies.json e config/settings.json, confronta con
-state/seen.json, e notifica solo gli annunci nuovi rispetto all'ultima run.
+Cerca su jobs.ch con le stesse parole chiave di ruolo usate per il filtro
+(praktikum, internship, praktikant...), su tutte le aziende che pubblicano
+li' - non solo la lista storica in config/companies.json. Confronta con
+state/external_seen.json e notifica solo gli annunci nuovi rispetto
+all'ultima run. Fa parte del "Canale 1" (esterno/tutta la rete) insieme a
+LinkedIn/Indeed/JobLeads (gestiti dalla routine cloud, vedi README).
 """
 import json
 import os
@@ -19,11 +23,14 @@ from pathlib import Path
 import requests
 
 ROOT = Path(__file__).resolve().parent.parent
-COMPANIES_FILE = ROOT / "config" / "companies.json"
 SETTINGS_FILE = ROOT / "config" / "settings.json"
-STATE_FILE = ROOT / "state" / "seen.json"
-LOG_FILE = ROOT / "state" / "matches_log.md"
-POSITIONS_FILE = ROOT / "state" / "positions.txt"
+STATE_FILE = ROOT / "state" / "external_seen.json"
+LOG_FILE = ROOT / "state" / "external_matches_log.md"
+POSITIONS_FILE = ROOT / "state" / "external_positions.txt"
+
+# Termini di ricerca jobs.ch derivati da role_keywords (solo forme senza
+# caratteri speciali tipo ":" che romperebbero l'URL di ricerca).
+BROAD_SEARCH_TERMS = ["praktikum", "praktikant", "praktikantin", "internship", "intern"]
 
 HEADERS = {
     "User-Agent": (
@@ -89,11 +96,6 @@ def fetch_jobsch_results(search_term: str) -> list:
         return []
 
 
-def company_matches(job: dict, keywords: list) -> bool:
-    name = norm(job.get("company", {}).get("name", ""))
-    return any(kw in name for kw in keywords)
-
-
 def location_matches(job: dict, settings: dict) -> bool:
     for loc in job.get("locations") or []:
         if loc.get("cantonCode") in settings["canton_filter"]:
@@ -138,7 +140,7 @@ def send_ntfy(topic: str, title: str, message: str, click_url: str = None, prior
 def write_positions_txt(seen: dict, generated_at: str):
     entries = sorted(seen.items(), key=lambda kv: kv[1].get("seen_at", ""), reverse=True)
     lines = [
-        f"Job Agent Zurigo - posizioni trovate su jobs.ch (aggiornato {generated_at})",
+        f"Job Agent Zurigo - Canale 1 (esterno): ricerca libera su jobs.ch, qualsiasi azienda (aggiornato {generated_at})",
         f"Totale: {len(entries)}",
         "",
     ]
@@ -175,7 +177,6 @@ def prune_stale_entries(seen: dict, settings: dict) -> dict:
 
 
 def main():
-    companies = json.loads(COMPANIES_FILE.read_text(encoding="utf-8"))
     settings = json.loads(SETTINGS_FILE.read_text(encoding="utf-8"))
     ntfy_topic = os.environ.get("NTFY_TOPIC") or settings.get("ntfy_topic") or ""
 
@@ -188,17 +189,19 @@ def main():
     new_matches = []
     errors = []
     now_iso = datetime.now(timezone.utc).isoformat()
+    seen_this_run = set()
 
-    for company in companies:
+    for term in BROAD_SEARCH_TERMS:
         try:
-            results = fetch_jobsch_results(company["search_term"])
+            results = fetch_jobsch_results(term)
         except requests.RequestException as e:
-            errors.append(f"{company['full_name']}: {e}")
+            errors.append(f"{term}: {e}")
             time.sleep(settings["request_delay_seconds"])
             continue
 
         for job in results:
-            if not company_matches(job, company["match_keywords"]):
+            job_id = job.get("id")
+            if not job_id or job_id in seen_this_run:
                 continue
             if not location_matches(job, settings):
                 continue
@@ -207,22 +210,20 @@ def main():
             if role_excluded(job, settings):
                 continue
 
-            job_id = job.get("id")
-            if not job_id:
-                continue
-
+            seen_this_run.add(job_id)
+            company_name = job.get("company", {}).get("name", "")
             url = f"https://www.jobs.ch/en/vacancies/detail/{job_id}/"
             if job_id not in seen:
                 new_matches.append({
                     "id": job_id,
                     "title": job.get("title", ""),
-                    "company": company["full_name"],
+                    "company": company_name,
                     "place": job.get("place", ""),
                     "url": url,
                 })
             seen[job_id] = {
                 "title": job.get("title", ""),
-                "company": company["full_name"],
+                "company": company_name,
                 "place": job.get("place", ""),
                 "url": url,
                 "seen_at": seen.get(job_id, {}).get("seen_at", now_iso),
@@ -263,7 +264,7 @@ def main():
                 truncated.append(line)
                 total += len(line) + 1
             remaining = len(lines) - len(truncated)
-            body = "\n".join(truncated) + f"\n... +{remaining} altri, vedi state/matches_log.md nel repo"
+            body = "\n".join(truncated) + f"\n... +{remaining} altri, vedi state/external_matches_log.md nel repo"
 
         send_ntfy(
             ntfy_topic,
@@ -275,7 +276,7 @@ def main():
         print("Nessun nuovo annuncio in questa run.")
 
     if errors:
-        print(f"{len(errors)} aziende non raggiungibili in questa run:", file=sys.stderr)
+        print(f"{len(errors)} termini di ricerca falliti in questa run:", file=sys.stderr)
         for e in errors:
             print(f"  - {e}", file=sys.stderr)
 
