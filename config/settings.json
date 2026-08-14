@@ -14,7 +14,16 @@
   ],
   "exclude_keywords": [
     "senior", "hr", "human resources", "ib", "investment banking",
-    "it", "energy", "robotics", "marketing", "ml"
+    "it", "energy", "robotics", "marketing", "ml",
+    "jura", "rechtswissenschaft", "wirtschaftsrecht", "law", "legal counsel",
+    "paralegal", "notariat", "advokatur", "rechtsanwalt",
+    "architektur", "architecture", "architect",
+    "ingenieur", "engineering", "maschinenbau", "elektrotechnik",
+    "bauingenieur", "bauingenieurwesen", "ingenieurwesen",
+    "wirtschaftsingenieur", "wirtschaftsingenieurwesen",
+    "informatik", "software engineer",
+    "philosophie", "philosophy",
+    "forschung", "wissenschaft", "wissenschaftlich", "phd", "doktorat"
   ],
   "request_delay_seconds": 0.8
 }
