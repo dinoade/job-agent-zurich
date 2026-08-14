@@ -193,23 +193,28 @@ def main():
             for m in new_matches:
                 f.write(f"- [{now_iso}] **{m['title']}** — {m['company']} ({m['place']}) — {m['url']}\n")
 
-        if len(new_matches) <= settings["max_individual_notifications_per_run"]:
-            for m in new_matches:
-                send_ntfy(
-                    ntfy_topic,
-                    f"Nuovo annuncio: {m['company']}",
-                    f"{m['title']}\n{m['place']}",
-                    click_url=m["url"],
-                    priority="high",
-                )
-        else:
-            names = ", ".join(m["company"] for m in new_matches[:5])
-            send_ntfy(
-                ntfy_topic,
-                f"{len(new_matches)} nuovi annunci trovati",
-                f"Tra cui: {names}... Vedi state/matches_log.md nel repo per l'elenco completo.",
-                priority="high",
-            )
+        # ntfy.sh non ha il limite di ~200 caratteri delle push notification native:
+        # mandiamo una notifica sola con la lista completa, azienda + titolo per ognuna.
+        lines = [f"{m['company']}: {m['title']}" for m in new_matches]
+        body = "\n".join(lines)
+        max_body_chars = 3800  # margine sotto il limite pratico di ntfy.sh (~4096 byte)
+        if len(body) > max_body_chars:
+            truncated = []
+            total = 0
+            for line in lines:
+                if total + len(line) + 1 > max_body_chars:
+                    break
+                truncated.append(line)
+                total += len(line) + 1
+            remaining = len(lines) - len(truncated)
+            body = "\n".join(truncated) + f"\n... +{remaining} altri, vedi state/matches_log.md nel repo"
+
+        send_ntfy(
+            ntfy_topic,
+            f"{len(new_matches)} nuovi annunci trovati",
+            body,
+            priority="high",
+        )
     else:
         print("Nessun nuovo annuncio in questa run.")
 
