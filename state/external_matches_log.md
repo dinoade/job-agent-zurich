@@ -1,0 +1,13 @@
+- [2026-08-14T23:45:14.890469+00:00] **Praktikum Radio Argovia (a)** — CH Media (Aarau) — https://www.jobs.ch/en/vacancies/detail/300a770b-5dd5-447b-a448-723784b86c2f/
+- [2026-08-14T23:45:14.890469+00:00] **Radio Praktikum Zürich (a)*** — Energy AG (Zürich) — https://www.jobs.ch/en/vacancies/detail/6aae8878-7c25-4ba9-a94f-5eee3bcd8d79/
+- [2026-08-14T23:45:14.890469+00:00] **Praktikum im Bereich Innovation / Entwicklung** — Syntegon Packaging Systems AG (Beringen) — https://www.jobs.ch/en/vacancies/detail/cf796e96-e5ed-46ed-8f32-aa4b65f5f4b6/
+- [2026-08-14T23:45:14.890469+00:00] **Praktikum in der Bauherrenvertretung des Kantons Zürich** — Baudirektion Kanton Zürich (Zürich) — https://www.jobs.ch/en/vacancies/detail/601b07d7-f92a-433b-8738-011a43ed76ba/
+- [2026-08-14T23:45:14.890469+00:00] **Praktikum Immobilienverwaltung (m/w/d) 80–100 %** — Rohrdorferberg-Mutschellen Immobilien AG (Widen) — https://www.jobs.ch/en/vacancies/detail/ca5a6539-7f47-4000-9630-ee03851397dd/
+- [2026-08-14T23:45:14.890469+00:00] **Praktikant KV (w/m/d) Spedition** — Cargologic AG (Zürich) — https://www.jobs.ch/en/vacancies/detail/505b0e9c-3b73-4d25-9945-4aec4b03af81/
+- [2026-08-14T23:45:14.890469+00:00] **Auditor/in (juristische/r Praktikant/in) (m/w/d)** — Kanton St. Gallen (Rapperswil-Jona) — https://www.jobs.ch/en/vacancies/detail/83ade9c7-ccf8-4253-b9fa-b66586c20296/
+- [2026-08-14T23:45:14.890469+00:00] **Auditor/in (juristische/r Praktikant/in) (m/w/d)** — Kanton St. Gallen (Wil) — https://www.jobs.ch/en/vacancies/detail/884fd143-7af2-405f-a239-a6e93a594fea/
+- [2026-08-14T23:45:14.890469+00:00] **Praktikant/-in Bauberatung** — Baudirektion Kanton Zürich (Dübendorf) — https://www.jobs.ch/en/vacancies/detail/d019a0cb-0e7c-415a-b822-4c7f9f2bef55/
+- [2026-08-14T23:45:14.890469+00:00] **Praktikant*in Medizinische Therapien** — Stadt Zürich Gesundheitszentren für das Alter (Zürich) — https://www.jobs.ch/en/vacancies/detail/7a6ec5b6-a312-4b5a-b01b-b04658f69b28/
+- [2026-08-14T23:45:14.890469+00:00] **Praktikantin / Praktikant Jurist/in (40–60 %) ab sofort gesucht** — Anwaltskanzlei Moncada GmbH (Baden) — https://www.jobs.ch/en/vacancies/detail/d83f343f-081e-4b83-a4af-5aaf1da706dc/
+- [2026-08-14T23:45:14.890469+00:00] **Sachbearbeitung Verkauf Intern Deutschschweiz (m/w/d)** — Rhiag Group GmbH (Baar) — https://www.jobs.ch/en/vacancies/detail/501509cd-a723-4729-962d-a880388a9e28/
+- [2026-08-14T23:45:14.890469+00:00] **Intern Sales Experience Transformation & Engagement 80-100% (9-12 months program duration)** — Sunrise GmbH (Glattpark_AmbassadorHouse) — https://www.jobs.ch/en/vacancies/detail/936257db-562c-4aa0-a0db-92b72ec92b9a/
