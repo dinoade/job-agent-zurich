@@ -1,5 +1,5 @@
 {
-  "ntfy_topic": "zh-jobs-65f1990be081",
+  "ntfy_topic": "zh-jobs-749009385cbe",
   "canton_filter": ["ZH", "ZG", "SH", "AG", "SG"],
   "location_keywords": [
     "zürich", "zurich", "winterthur", "opfikon", "wallisellen", "kloten",
@@ -11,6 +11,15 @@
   "role_keywords": [
     "intern", "internship", "praktikum", "praktikant", "praktikant:in",
     "praktikantin"
+  ],
+  "domain_keywords": [
+    "bank", "banking", "bankwesen", "finance", "financial", "finanz", "finanza",
+    "finanzwesen", "data", "process development", "prozessentwicklung",
+    "process management", "prozessmanagement", "economics", "economia",
+    "wirtschaft", "volkswirtschaft", "betriebswirtschaft", "compliance",
+    "controlling", "controller", "accounting", "rechnungswesen", "treasury",
+    "investment", "asset management", "wealth management", "insurance",
+    "versicherung", "versicherungswesen", "audit", "risk"
   ],
   "exclude_keywords": [
     "senior", "hr", "human resources", "ib", "investment banking",

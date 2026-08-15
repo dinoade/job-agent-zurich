@@ -120,6 +120,19 @@ def role_excluded(job: dict, settings: dict) -> bool:
     return False
 
 
+def domain_matches(job: dict, settings: dict) -> bool:
+    domain_keywords = settings.get("domain_keywords")
+    if not domain_keywords:
+        return True  # nessun filtro di dominio configurato
+    company = job.get("company")
+    company_name = company if isinstance(company, str) else (company or {}).get("name", "")
+    text = norm(job.get("title", "") + " " + company_name)
+    for kw in domain_keywords:
+        if re.search(r"\b" + re.escape(norm(kw)) + r"\b", text):
+            return True
+    return False
+
+
 def send_ntfy(topic: str, title: str, message: str, click_url: str = None, priority: str = "default"):
     if not topic:
         print("WARN: nessun NTFY_TOPIC configurato, notifica saltata.", file=sys.stderr)
@@ -159,16 +172,8 @@ def prune_stale_entries(seen: dict, settings: dict) -> dict:
     (es. aggiunte prima che un filtro fosse introdotto/modificato)."""
     kept = {}
     for job_id, m in seen.items():
-        title = norm(m.get("title", ""))
-        role_ok = any(
-            re.search(r"\b" + re.escape(norm(kw)) + r"\b", title)
-            for kw in settings["role_keywords"]
-        )
-        excluded = any(
-            re.search(r"\b" + re.escape(norm(kw)) + r"\b", title)
-            for kw in settings.get("exclude_keywords", [])
-        )
-        if role_ok and not excluded:
+        job = {"title": m.get("title", ""), "company": m.get("company", "")}
+        if role_matches(job, settings) and not role_excluded(job, settings) and domain_matches(job, settings):
             kept[job_id] = m
     removed = len(seen) - len(kept)
     if removed:
@@ -208,6 +213,8 @@ def main():
             if not role_matches(job, settings):
                 continue
             if role_excluded(job, settings):
+                continue
+            if not domain_matches(job, settings):
                 continue
 
             seen_this_run.add(job_id)

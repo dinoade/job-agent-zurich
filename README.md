@@ -19,8 +19,13 @@ Entrambi i canali applicano gli stessi filtri (config/settings.json):
 - **Luogo** (`location_keywords` / `canton_filter`): cantoni ZH, ZG, SH, AG, SG —
   Zurigo città e dintorni, Zugo, Sciaffusa, Baden, San Gallo e zone limitrofe (~1h di
   treno da Winterthur). Filtro a livello di cantone: in casi rari può includere
-  località di quel cantone più lontane di 1h (es. Aargau occidentale). Nessun filtro
-  di settore oltre a questi — il Canale 1 include stage di qualsiasi ambito.
+  località di quel cantone più lontane di 1h (es. Aargau occidentale).
+- **Dominio** (`domain_keywords`, obbligatorie — controllate su titolo E nome
+  azienda): almeno una tra banking, finance/finanz, data, process
+  development/prozessentwicklung, economics/wirtschaft, compliance, controlling,
+  accounting, treasury, investment, asset/wealth management, insurance, audit, risk.
+  Esclude stage chiaramente di altre facoltà (medicina, pedagogia, ingegneria,
+  amministrazione generica, ecc.) anche se non coperti da `exclude_keywords`.
 
 ## Come funziona (due infrastrutture diverse, per limiti tecnici reali)
 
@@ -94,7 +99,7 @@ job board (probabile omonimo non pertinente).
 1. Installa l'app **ntfy** su iOS/Android (gratuita, nessuna registrazione).
 2. Nell'app, aggiungi come "subscription" questo topic (tienilo segreto, funge da password):
    ```
-   zh-jobs-65f1990be081
+   zh-jobs-749009385cbe
    ```
 
 ### 2. Notifiche push — resto Canale 1 + Canale 2 (Remote Control)
@@ -130,6 +135,8 @@ su claude.ai/customize/connectors) e in scrittura da GitHub Actions (automatico 
 
 - **Parole chiave ruolo**: modifica `role_keywords` in `config/settings.json`.
 - **Esclusioni**: modifica `exclude_keywords` in `config/settings.json`.
+- **Dominio (settore)**: modifica `domain_keywords` in `config/settings.json` — lascia
+  vuoto `[]` per disattivare il filtro di dominio (tutti i settori, non solo finanza).
 - **Luoghi**: modifica `location_keywords` / `canton_filter` in `config/settings.json`.
 - **Termini di ricerca jobs.ch (Canale 1)**: modifica `BROAD_SEARCH_TERMS` in
   `scripts/check_jobs.py`.
@@ -139,7 +146,7 @@ su claude.ai/customize/connectors) e in scrittura da GitHub Actions (automatico 
 
 ```bash
 cd ~/job-agent-zurich
-NTFY_TOPIC="zh-jobs-65f1990be081" python3 scripts/check_jobs.py
+NTFY_TOPIC="zh-jobs-749009385cbe" python3 scripts/check_jobs.py
 ```
 
 ## Verifica siti careers (2026-08-12)
