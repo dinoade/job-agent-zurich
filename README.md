@@ -81,9 +81,12 @@ file nel repo da quell'ambiente. Di conseguenza:
 
 - Ogni notifica elenca gli annunci *attualmente aperti*, non solo i nuovi —
   aspettati ripetizioni finché un annuncio resta pubblicato.
-- Una notifica push ha un limite fisso di ~200 caratteri: se i risultati non ci
-  stanno tutti, la routine invia solo i più rilevanti. Il dettaglio completo di ogni
-  run resta visibile aprendo la sessione su
+- Una singola notifica push ha un limite fisso di ~200 caratteri, insufficiente per
+  liste lunghe. La routine quindi manda **2-5 notifiche a blocchi** (`[1/3]`, `[2/3]`...)
+  invece di una sola tronca — così tutti gli annunci restano visibili, non solo un
+  conteggio. Se ci sono più di ~30 annunci in un giro, oltre la 6a notifica il resto
+  viene riassunto con "+N altri" (raro dato il filtro di dominio). Il dettaglio
+  completo di ogni run resta comunque visibile aprendo la sessione su
   https://claude.ai/code/routines/trig_018hj6Lc29qPW2nLttzu3Ngs.
 - **Nessun file .txt automatico** per queste fonti (LinkedIn/Indeed/JobLeads +
   Canale 2): quando serve, viene generato manualmente rileggendo l'ultima esecuzione
