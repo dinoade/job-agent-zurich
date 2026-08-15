@@ -1,0 +1,73 @@
+Job Agent Zurigo - Canale 2 (diretto): 76 aziende assegnate + JobLeads (aggiornato 2026-08-15T00:30:12Z)
+Nota: file generato manualmente rileggendo l'ultima esecuzione della routine cloud
+(quel canale non puo' scrivere nel repo da solo - vedi README). Non e' un
+aggiornamento automatico ogni 6h.
+Totale: 21
+
+Bank Julius Bär - Internship - Data Scientist Treasury Risk (4-6 months) (Zürich)
+  https://julius-baer.talentify.io/job/internship-treasury-risk-4-months-zurich-zurich-julius-baer-r-9224-1
+
+Bank Vontobel - Internship Structured Solutions Sales Europe (Zürich)
+  https://www.vontobel.com/en-ch/about-vontobel/careers/open-positions/8612-internship-structured-solutions-sales-europe/
+
+Barclays Capital - Sales, Trading and Structuring Off Cycle Internship Programme 2026 (Zürich)
+  https://search.jobs.barclays/job/zurich/sales-trading-and-structuring-off-cycle-internship-programme-2026-zurich/13015/85822863504
+
+Citi - Markets - Sales, Trading and Structuring, Off-Cycle Internship 2026 (Zürich)
+  https://jobs.citi.com/job/zurich/markets-sales-trading-and-structuring-off-cycle-internship-switzerland-zurich-2026/287/90837754848
+
+Citi - Markets - Sales, Trading and Structuring, Off-Cycle Internship 2026 (2a posizione) (Zürich)
+  https://jobs.citi.com/job/zurich/markets-sales-trading-and-structuring-off-cycle-internship-switzerland-zurich-2026/287/89865241712
+
+Habib Bank AG Zürich - Summer Internship Programme 2026 (Zürich)
+  https://habibbank.com/ch/job-opening/summer-internship-programme-2026/
+
+Leonteq Securities - Sales Intern (Zürich)
+  https://www.jobs.ch/en/vacancies/detail/a39027b2-bb93-47fc-8514-e6c1b4a90737/
+
+Rothschild & Co - 2027 Global Advisory Zurich Internship (January - April) (Zürich)
+  https://www.rothschildandco.com/en/careers/students-and-graduates/opportunities/global-advisory-zurich-internship-january-april-2027/
+
+Rothschild & Co - Zurich Internship: September - December 2026 (Zürich)
+  https://www.rothschildandco.com/en/careers/students-and-graduates/opportunities/zurich-internship-september-december-2026/
+
+Société Générale - Sales Credit Internship (Zürich)
+  https://careers.societegenerale.com/en/job-offers/sales-credit-internship-260007J8-en
+
+Société Générale - Intern Junior Sales GTB (Global Transaction Banking) (Zürich)
+  https://careers.societegenerale.com/en/job-offers/intern-junior-sales-gtb-global-transaction-banking-26000ERO-en
+
+Société Générale - Intern Middle Officer GTPS / Payment and Cash Management (PCM) (Zürich)
+  https://careers.societegenerale.com/en/job-offers/intern-middle-officer-gtps-payment-and-cash-management-pcm-m-f-d-2600035S-en
+
+Swiss Re - Group Sustainability Intern (4-6 months, 80-100%) (Zürich)
+  https://careers.swissre.com/job/Zurich-Group-Sustainability-Intern-(4-6-months-mfxd,-80-100)-Zuri/1413653233/
+
+UBS - 2026 Off-cycle Internship - Group Risk Control (Zürich)
+  https://jobs.ubs.com/TGnewUI/Search/home/HomeWithPreLoad?partnerid=25008&siteid=5131&PageType=JobDetails&jobid=348010
+
+UBS - 2026 Off-cycle Internship - Group M&A (Zürich)
+  https://jobs.ubs.com/TGnewUI/Search/home/HomeWithPreLoad?partnerid=25008&siteid=5176&PageType=JobDetails&jobid=333575
+
+Verve Capital Partners - Visiting Analyst Internship Program (Zürich)
+  https://www.verve.vc/visiting-analyst-program/
+
+VZ Depotbank - PWA Praktikum im Relationship Management Banking (August 2026) (Zürich)
+  https://jobs.vermoegenszentrum.ch/offene-stellen/pwa-praktikum-im-relationship-management-banking-august-2026/b534812f-8983-40b1-86eb-c020f5197dd2
+
+VZ Depotbank - Praktikum im Financial Consulting (Zürich)
+  https://jobs.vermoegenszentrum.ch/offene-stellen/praktikum-im-financial-consulting-per-sofort-befristet-auf-6-monate/e459228b-5a0c-4fb7-b98c-64b060d75e64
+
+XL Insurance - Intern Underwriting Specialty (80-100%) (Zürich)
+  https://careers.axa.com/careers-home/jobs/17411?lang=en-us
+
+Zuger Kantonalbank - Bankeinstieg nach Matura (BEM-Praktikum) (Zug)
+  https://www.zugerkb.ch/die-zugerkb/jobs-und-karriere/praktika/bankeinstieg
+
+--- Trovati anche via JobLeads (fuori dalle 76 aziende assegnate) ---
+
+ABB - internship trovato via JobLeads (Zug)
+  (URL completo non catturato nel transcript - vedi ricerca "site:jobleads.com" per ABB Zug)
+
+Partners Group - internship trovato via JobLeads (Zug)
+  (URL completo non catturato nel transcript - vedi ricerca "site:jobleads.com" Partners Group Zug)
