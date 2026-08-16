@@ -281,6 +281,11 @@ def main():
         )
     else:
         print("Nessun nuovo annuncio in questa run.")
+        send_ntfy(
+            ntfy_topic,
+            "Job Agent Zurigo",
+            "Nessun nuovo annuncio trovato in questo giro.",
+        )
 
     if errors:
         print(f"{len(errors)} termini di ricerca falliti in questa run:", file=sys.stderr)
