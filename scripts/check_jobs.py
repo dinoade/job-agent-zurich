@@ -12,15 +12,21 @@ LinkedIn/Indeed/JobLeads (gestiti dalla routine cloud, vedi README).
 """
 import json
 import os
-import re
 import sys
 import time
-import unicodedata
 import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
+
+from common import (
+    domain_matches,
+    location_matches,
+    role_excluded,
+    role_matches,
+    send_ntfy,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 SETTINGS_FILE = ROOT / "config" / "settings.json"
@@ -38,16 +44,6 @@ HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
     )
 }
-
-
-def strip_accents(s: str) -> str:
-    return "".join(
-        c for c in unicodedata.normalize("NFKD", s) if not unicodedata.combining(c)
-    )
-
-
-def norm(s: str) -> str:
-    return strip_accents(s or "").lower()
 
 
 def extract_braced_object(html: str, marker: str):
@@ -96,60 +92,6 @@ def fetch_jobsch_results(search_term: str) -> list:
         return []
 
 
-def location_matches(job: dict, settings: dict) -> bool:
-    for loc in job.get("locations") or []:
-        if loc.get("cantonCode") in settings["canton_filter"]:
-            return True
-    place = norm(job.get("place", ""))
-    return any(norm(kw) in place for kw in settings["location_keywords"])
-
-
-def role_matches(job: dict, settings: dict) -> bool:
-    title = norm(job.get("title", ""))
-    for kw in settings["role_keywords"]:
-        if re.search(r"\b" + re.escape(norm(kw)) + r"\b", title):
-            return True
-    return False
-
-
-def role_excluded(job: dict, settings: dict) -> bool:
-    title = norm(job.get("title", ""))
-    for kw in settings.get("exclude_keywords", []):
-        if re.search(r"\b" + re.escape(norm(kw)) + r"\b", title):
-            return True
-    return False
-
-
-def domain_matches(job: dict, settings: dict) -> bool:
-    domain_keywords = settings.get("domain_keywords")
-    if not domain_keywords:
-        return True  # nessun filtro di dominio configurato
-    company = job.get("company")
-    company_name = company if isinstance(company, str) else (company or {}).get("name", "")
-    text = norm(job.get("title", "") + " " + company_name)
-    for kw in domain_keywords:
-        if re.search(r"\b" + re.escape(norm(kw)) + r"\b", text):
-            return True
-    return False
-
-
-def send_ntfy(topic: str, title: str, message: str, click_url: str = None, priority: str = "default"):
-    if not topic:
-        print("WARN: nessun NTFY_TOPIC configurato, notifica saltata.", file=sys.stderr)
-        return
-    headers = {
-        "Title": strip_accents(title) or "Job Alert",
-        "Priority": priority,
-        "Tags": "briefcase",
-    }
-    if click_url:
-        headers["Click"] = click_url
-    try:
-        requests.post(f"https://ntfy.sh/{topic}", data=message.encode("utf-8"), headers=headers, timeout=10)
-    except requests.RequestException as e:
-        print(f"WARN: invio notifica ntfy fallito: {e}", file=sys.stderr)
-
-
 def write_positions_txt(seen: dict, generated_at: str):
     entries = sorted(seen.items(), key=lambda kv: kv[1].get("seen_at", ""), reverse=True)
     lines = [
@@ -172,8 +114,9 @@ def prune_stale_entries(seen: dict, settings: dict) -> dict:
     (es. aggiunte prima che un filtro fosse introdotto/modificato)."""
     kept = {}
     for job_id, m in seen.items():
-        job = {"title": m.get("title", ""), "company": m.get("company", "")}
-        if role_matches(job, settings) and not role_excluded(job, settings) and domain_matches(job, settings):
+        title = m.get("title", "")
+        company = m.get("company", "")
+        if role_matches(title, settings) and not role_excluded(title, settings) and domain_matches(title, company, settings):
             kept[job_id] = m
     removed = len(seen) - len(kept)
     if removed:
@@ -210,15 +153,16 @@ def main():
                 continue
             if not location_matches(job, settings):
                 continue
-            if not role_matches(job, settings):
+            title = job.get("title", "")
+            company_name = job.get("company", {}).get("name", "")
+            if not role_matches(title, settings):
                 continue
-            if role_excluded(job, settings):
+            if role_excluded(title, settings):
                 continue
-            if not domain_matches(job, settings):
+            if not domain_matches(title, company_name, settings):
                 continue
 
             seen_this_run.add(job_id)
-            company_name = job.get("company", {}).get("name", "")
             url = f"https://www.jobs.ch/en/vacancies/detail/{job_id}/"
             if job_id not in seen:
                 new_matches.append({
