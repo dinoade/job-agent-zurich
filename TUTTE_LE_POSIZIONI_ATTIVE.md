@@ -16,7 +16,7 @@ esplicita per un'istantanea manuale.
 
 ## Canale 1 — jobs.ch (ricerca libera, qualsiasi azienda)
 
-*Aggiornato 2026-08-16 18:32 UTC*
+*Aggiornato 2026-08-16 19:10 UTC*
 
 - **KPMG** — Internship Data Analytics Financial Services (Zürich)
   https://www.jobs.ch/en/vacancies/detail/2c40f64a-b66f-4d8c-b0c9-428ebdd71143/
@@ -29,7 +29,7 @@ esplicita per un'istantanea manuale.
 
 ## Canale 2 — 76 aziende dirette (scraper Python, senza IA)
 
-*Aggiornato 2026-08-16 18:32 UTC*
+*Aggiornato 2026-08-16 19:10 UTC*
 
 - **Zurich Insurance Group** — NextGen Tech Internship Program
   https://www.zurich.com/careers/nextgen-tech
@@ -42,4 +42,4 @@ esplicita per un'istantanea manuale.
 
 ---
 
-*Ultimo aggiornamento automatico: 2026-08-16 18:32 UTC.*
+*Ultimo aggiornamento automatico: 2026-08-16 19:10 UTC.*
