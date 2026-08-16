@@ -55,6 +55,14 @@ per confermare che il sistema è vivo), e mantiene due file sempre aggiornati:
 - [`state/external_matches_log.md`](state/external_matches_log.md): log storico,
   solo aggiunte, con timestamp.
 
+### Documento unico — [TUTTE_LE_POSIZIONI_ATTIVE.md](TUTTE_LE_POSIZIONI_ATTIVE.md)
+
+`scripts/build_snapshot.py` gira su GitHub Actions ogni 6 ore (dopo Canale 1 e 2)
+e rigenera questo file unendo lo stato corrente dei due canali in un unico
+documento leggibile su GitHub. **Non include il Canale 3** (LinkedIn/Indeed/
+JobLeads): quella routine non può scrivere file nel repo, quindi non c'è stato
+automatico da cui generarlo — il documento lo segnala esplicitamente.
+
 ### Canale 2 — 76 aziende dirette: GitHub Actions, scraper Python (nessuna IA)
 
 `scripts/check_direct.py` gira su GitHub Actions ogni 6 ore (sfalsato di 30 minuti
@@ -154,13 +162,16 @@ Nota: il repo deve essere accessibile in lettura dalla routine cloud (GitHub col
 su claude.ai/customize/connectors) e in scrittura da GitHub Actions (automatico via
 `GITHUB_TOKEN`, nessun setup aggiuntivo necessario).
 
-### 4. Attivare i tre scheduler
+### 4. Attivare gli scheduler
 
 - **GitHub Actions (Canale 1, jobs.ch)**: si attiva da solo appena il file
   [.github/workflows/check-jobs.yml](.github/workflows/check-jobs.yml) è nel repo su
   GitHub (branch `main`) — verificabile nella tab "Actions" del repo.
 - **GitHub Actions (Canale 2, aziende dirette)**: idem, file
   [.github/workflows/check-direct.yml](.github/workflows/check-direct.yml).
+- **GitHub Actions (documento unico)**: idem, file
+  [.github/workflows/build-snapshot.yml](.github/workflows/build-snapshot.yml),
+  schedulato 15 minuti dopo il Canale 2 per essere sicuro di leggere stato fresco.
 - **Routine cloud (LinkedIn/Indeed/JobLeads)**: creata una volta sola tramite
   `/schedule` — gestibile/visibile su https://claude.ai/code/routines.
 
