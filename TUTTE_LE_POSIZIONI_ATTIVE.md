@@ -10,13 +10,13 @@ esiste uno stato persistente automatico da cui generare questa sezione. Per
 quel canale restano solo le notifiche push sul telefono, o una richiesta
 esplicita per un'istantanea manuale.
 
-**Totale posizioni attive (Canale 1 + Canale 2): 6**
+**Totale posizioni attive (Canale 1 + Canale 2): 7**
 
 ---
 
 ## Canale 1 — jobs.ch (ricerca libera, qualsiasi azienda)
 
-*Aggiornato 2026-08-20 13:35 UTC*
+*Aggiornato 2026-08-20 19:20 UTC*
 
 - **KPMG** — Internship Data Analytics Financial Services (Zürich)
   https://www.jobs.ch/en/vacancies/detail/2c40f64a-b66f-4d8c-b0c9-428ebdd71143/
@@ -29,8 +29,10 @@ esplicita per un'istantanea manuale.
 
 ## Canale 2 — 76 aziende dirette (scraper Python, senza IA)
 
-*Aggiornato 2026-08-20 13:35 UTC*
+*Aggiornato 2026-08-20 19:20 UTC*
 
+- **Barclays Capital** — Banking Analyst Summer Internship Program 2027 Houston
+  https://search.jobs.barclays/job/houston/banking-analyst-summer-internship-program-2027-houston/13015/89084599408
 - **Zurich Insurance Group** — NextGen Tech Internship Program
   https://www.zurich.com/careers/nextgen-tech
 - **Deutsche Bank** — Dein Schul-, FOS- und Berufsorientierungs-Praktikum
@@ -42,4 +44,4 @@ esplicita per un'istantanea manuale.
 
 ---
 
-*Ultimo aggiornamento automatico: 2026-08-20 13:35 UTC.*
+*Ultimo aggiornamento automatico: 2026-08-20 19:20 UTC.*
