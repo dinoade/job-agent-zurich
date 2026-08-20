@@ -1,5 +1,8 @@
-Job Agent Zurigo - Canale 2 (aziende dirette): scraper best-effort sui siti careers (aggiornato 2026-08-20T13:30:55.087692+00:00)
-Totale: 3
+Job Agent Zurigo - Canale 2 (aziende dirette): scraper best-effort sui siti careers (aggiornato 2026-08-20T19:17:40.078939+00:00)
+Totale: 4
+
+Barclays Capital - Banking Analyst Summer Internship Program 2027 Houston
+  https://search.jobs.barclays/job/houston/banking-analyst-summer-internship-program-2027-houston/13015/89084599408
 
 Zurich Insurance Group - NextGen Tech Internship Program
   https://www.zurich.com/careers/nextgen-tech
