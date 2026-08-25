@@ -16,7 +16,7 @@ esplicita per un'istantanea manuale.
 
 ## Canale 1 — jobs.ch (ricerca libera, qualsiasi azienda)
 
-*Aggiornato 2026-08-24 19:19 UTC*
+*Aggiornato 2026-08-25 02:09 UTC*
 
 - **KPMG** — Internship Data Analytics Financial Services (Zürich)
   https://www.jobs.ch/en/vacancies/detail/2c40f64a-b66f-4d8c-b0c9-428ebdd71143/
@@ -29,7 +29,7 @@ esplicita per un'istantanea manuale.
 
 ## Canale 2 — 76 aziende dirette (scraper Python, senza IA)
 
-*Aggiornato 2026-08-24 19:19 UTC*
+*Aggiornato 2026-08-25 02:09 UTC*
 
 - **Barclays Capital** — Banking Analyst Summer Internship Program 2027 Houston
   https://search.jobs.barclays/job/houston/banking-analyst-summer-internship-program-2027-houston/13015/89084599408
@@ -44,4 +44,4 @@ esplicita per un'istantanea manuale.
 
 ---
 
-*Ultimo aggiornamento automatico: 2026-08-24 19:19 UTC.*
+*Ultimo aggiornamento automatico: 2026-08-25 02:09 UTC.*
