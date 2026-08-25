@@ -11,3 +11,4 @@
 - [2026-08-14T23:45:14.890469+00:00] **Praktikantin / Praktikant Jurist/in (40–60 %) ab sofort gesucht** — Anwaltskanzlei Moncada GmbH (Baden) — https://www.jobs.ch/en/vacancies/detail/d83f343f-081e-4b83-a4af-5aaf1da706dc/
 - [2026-08-14T23:45:14.890469+00:00] **Sachbearbeitung Verkauf Intern Deutschschweiz (m/w/d)** — Rhiag Group GmbH (Baar) — https://www.jobs.ch/en/vacancies/detail/501509cd-a723-4729-962d-a880388a9e28/
 - [2026-08-14T23:45:14.890469+00:00] **Intern Sales Experience Transformation & Engagement 80-100% (9-12 months program duration)** — Sunrise GmbH (Glattpark_AmbassadorHouse) — https://www.jobs.ch/en/vacancies/detail/936257db-562c-4aa0-a0db-92b72ec92b9a/
+- [2026-08-25T07:06:59.794441+00:00] **Process Safety Data Analyst Intern (m/w/d)** — Givaudan (Kemptthal) — https://www.jobs.ch/en/vacancies/detail/62498bf8-e45a-4a10-a203-3398b57755f9/
