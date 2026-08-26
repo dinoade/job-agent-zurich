@@ -16,7 +16,7 @@ esplicita per un'istantanea manuale.
 
 ## Canale 1 — jobs.ch (ricerca libera, qualsiasi azienda)
 
-*Aggiornato 2026-08-25 19:19 UTC*
+*Aggiornato 2026-08-26 02:15 UTC*
 
 - **Givaudan** — Process Safety Data Analyst Intern (m/w/d) (Kemptthal)
   https://www.jobs.ch/en/vacancies/detail/62498bf8-e45a-4a10-a203-3398b57755f9/
@@ -31,7 +31,7 @@ esplicita per un'istantanea manuale.
 
 ## Canale 2 — 76 aziende dirette (scraper Python, senza IA)
 
-*Aggiornato 2026-08-25 19:19 UTC*
+*Aggiornato 2026-08-26 02:15 UTC*
 
 - **Barclays Capital** — Banking Analyst Summer Internship Program 2027 Houston
   https://search.jobs.barclays/job/houston/banking-analyst-summer-internship-program-2027-houston/13015/89084599408
@@ -46,4 +46,4 @@ esplicita per un'istantanea manuale.
 
 ---
 
-*Ultimo aggiornamento automatico: 2026-08-25 19:19 UTC.*
+*Ultimo aggiornamento automatico: 2026-08-26 02:15 UTC.*
