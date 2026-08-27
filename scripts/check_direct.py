@@ -1,4 +1,4 @@
-"""Controllo diretto dei siti careers delle aziende assegnate (Canale 2) e notifica via ntfy.sh.
+"""Controllo diretto dei siti careers delle aziende assegnate e notifica via ntfy.sh.
 
 Uso:
     python3 scripts/check_direct.py
@@ -6,7 +6,7 @@ Uso:
 Per ognuna delle aziende in config/direct_check_companies.json, prova a
 leggere la pagina careers e (best-effort) le API JSON note di alcune
 piattaforme ATS comuni (es. Workday), cercando link/annunci il cui testo
-soddisfa gli stessi filtri di ruolo/esclusioni/dominio del Canale 1.
+soddisfa i filtri di ruolo/esclusioni/dominio in config/settings.json.
 
 Nessuna IA coinvolta: e' un parsing per parole chiave, non per significato.
 Molti portali (Workday incluso quando la pagina e' renderizzata solo via
@@ -15,8 +15,7 @@ HTML statico scaricato con requests: per quelle aziende questo script
 tipicamente trova 0 risultati anche quando ci sono posizioni aperte. Vedi
 README per i limiti noti. Mantiene stato persistente in
 state/direct_check_seen.json e notifica solo i NUOVI annunci rispetto
-all'ultima run (comportamento richiesto esplicitamente, a differenza della
-vecchia routine cloud che non poteva farlo).
+all'ultima run.
 """
 import hashlib
 import json
@@ -160,7 +159,7 @@ def fetch_company_candidates(careers_url: str) -> list:
 def write_positions_txt(seen: dict, generated_at: str):
     entries = sorted(seen.items(), key=lambda kv: kv[1].get("seen_at", ""), reverse=True)
     lines = [
-        f"Job Agent Zurigo - Canale 2 (aziende dirette): scraper best-effort sui siti careers (aggiornato {generated_at})",
+        f"Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato {generated_at})",
         f"Totale: {len(entries)}",
         "",
     ]
@@ -266,7 +265,7 @@ def main():
             f"Da ora ti avviso solo sui nuovi annunci.",
         )
     elif new_matches:
-        print(f"{len(new_matches)} nuovi annunci trovati (Canale 2).")
+        print(f"{len(new_matches)} nuovi annunci trovati.")
         with LOG_FILE.open("a", encoding="utf-8") as f:
             for m in new_matches:
                 f.write(f"- [{now_iso}] **{m['title']}** — {m['company']} — {m['url']}\n")
@@ -292,7 +291,7 @@ def main():
             priority="high",
         )
     else:
-        print("Nessun nuovo annuncio in questa run (Canale 2).")
+        print("Nessun nuovo annuncio in questa run.")
         send_ntfy(
             ntfy_topic,
             "Job Agent Zurigo - Aziende dirette",
