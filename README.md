@@ -41,13 +41,11 @@ significato.** Filtri (`config/settings.json`):
   praktikant, praktikant:in, praktikantin — solo stage/internship.
 - **Esclusioni** (`exclude_keywords`): scarta il titolo se contiene senior, hr,
   human resources, ib, investment banking, it, energy, robotics, marketing, ml
-  + altre facoltà non pertinenti (legge, architettura, ingegneria, filosofia,
-  ricerca accademica) — anche se soddisfa il filtro ruolo.
-- **Dominio** (`domain_keywords`, obbligatorie — controllate su titolo E nome
-  azienda): almeno una tra banking, finance/finanz, data, process
-  development/prozessentwicklung, economics/wirtschaft, compliance,
-  controlling, accounting, treasury, investment, asset/wealth management,
-  insurance, audit, risk.
+  — anche se soddisfa il filtro ruolo.
+- **Dominio** (`domain_keywords`): **vuoto di default — nessun filtro di
+  settore**, qualsiasi ambito va bene, non solo finanza. Se in futuro serve
+  restringere di nuovo, basta aggiungere parole chiave qui (controllate su
+  titolo E nome azienda).
 
 ## Limiti noti (accettati per restare a costo zero, senza IA)
 

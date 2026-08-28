@@ -92,6 +92,7 @@ NON_SWISS_LOCATION_HINTS = [
     "cairo", "riyadh", "doha", "abu dhabi", "istanbul", "tel aviv",
     "stockholm", "copenhagen", "oslo", "helsinki", "vienna", "wien", "prague",
     "budapest", "athens", "lisbon", "porto", "barcelona", "rome", "roma",
+    "monaco",  # Principato di Monaco (piazza finanziaria comune per private banking)
     # Sigle aziendali note per centri servizi offshore, mai in Svizzera
     "gsc",  # HSBC "Global Service Centre" (India/Polonia/Sri Lanka/Malesia)
 ]

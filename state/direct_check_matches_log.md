@@ -1,3 +1,8 @@
 - [2026-08-16T17:04:21.385916+00:00] **NextGen Tech Internship Program** — Zurich Insurance Group — https://www.zurich.com/careers/nextgen-tech
 - [2026-08-20T19:17:40.078939+00:00] **Banking Analyst Summer Internship Program 2027 Houston** — Barclays Capital — https://search.jobs.barclays/job/houston/banking-analyst-summer-internship-program-2027-houston/13015/89084599408
 - [2026-08-28T16:42:59.384275+00:00] **We offer our Internship Programme across various business divisions and infrastructure areas.** — Deutsche Bank — https://careers.db.com/students-graduates/internship-programme/
+- [2026-08-28T18:40:37.616787+00:00] **Explore Internship Opportunities** — Goldman Sachs — https://www.goldmansachs.com/careers/students/programs-and-internships?0=gscom%253Aprogram-type%252Finternship
+- [2026-08-28T18:40:37.616787+00:00] **Intern and Entry-Level Programs** — Jefferies — https://jefferies.tal.net/vx/lang-en-GB/mobile-0/appcentre-ext/brand-4/xf-016c915b0a67/candidate/jobboard/vacancy/2/adv/
+- [2026-08-28T18:40:37.616787+00:00] **Sales Intern Monaco** — Leonteq Securities — https://careers.leonteq.com/?page=advertisement_display&id=1973
+- [2026-08-28T18:40:37.616787+00:00] **Explore our Internship opportunities** — Rothschild & Co — https://www.rothschildandco.com/en/careers/students-and-graduates/internships/
+- [2026-08-28T18:40:37.616787+00:00] **Praktikum Bankeinstieg nach Matura (BEM)** — Zuger Kantonalbank — https://www.zugerkb.ch/die-zugerkb/jobs-und-karriere/offene-stellen/job-beschrieb?JobDetail=SAEI1983-5

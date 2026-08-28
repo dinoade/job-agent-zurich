@@ -1,5 +1,17 @@
-Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-08-28T16:46:16.229434+00:00)
-Totale: 3
+Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-08-28T18:43:41.250951+00:00)
+Totale: 7
+
+Goldman Sachs - Explore Internship Opportunities
+  https://www.goldmansachs.com/careers/students/programs-and-internships?0=gscom%253Aprogram-type%252Finternship
+
+Jefferies - Intern and Entry-Level Programs
+  https://jefferies.tal.net/vx/lang-en-GB/mobile-0/appcentre-ext/brand-4/xf-016c915b0a67/candidate/jobboard/vacancy/2/adv/
+
+Rothschild & Co - Explore our Internship opportunities
+  https://www.rothschildandco.com/en/careers/students-and-graduates/internships/
+
+Zuger Kantonalbank - Praktikum Bankeinstieg nach Matura (BEM)
+  https://www.zugerkb.ch/die-zugerkb/jobs-und-karriere/offene-stellen/job-beschrieb?JobDetail=SAEI1983-5
 
 Deutsche Bank - We offer our Internship Programme across various business divisions and infrastructure areas.
   https://careers.db.com/students-graduates/internship-programme/

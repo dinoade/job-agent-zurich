@@ -12,27 +12,10 @@
     "intern", "internship", "praktikum", "praktikant", "praktikant:in",
     "praktikantin"
   ],
-  "domain_keywords": [
-    "bank", "banking", "bankwesen", "finance", "financial", "finanz", "finanza",
-    "finanzwesen", "data", "process development", "prozessentwicklung",
-    "process management", "prozessmanagement", "economics", "economia",
-    "wirtschaft", "volkswirtschaft", "betriebswirtschaft", "compliance",
-    "controlling", "controller", "accounting", "rechnungswesen", "treasury",
-    "investment", "asset management", "wealth management", "insurance",
-    "versicherung", "versicherungswesen", "audit", "risk"
-  ],
+  "domain_keywords": [],
   "exclude_keywords": [
     "senior", "hr", "human resources", "ib", "investment banking",
-    "it", "energy", "robotics", "marketing", "ml",
-    "jura", "rechtswissenschaft", "wirtschaftsrecht", "law", "legal counsel",
-    "paralegal", "notariat", "advokatur", "rechtsanwalt",
-    "architektur", "architecture", "architect",
-    "ingenieur", "engineering", "maschinenbau", "elektrotechnik",
-    "bauingenieur", "bauingenieurwesen", "ingenieurwesen",
-    "wirtschaftsingenieur", "wirtschaftsingenieurwesen",
-    "informatik", "software engineer",
-    "philosophie", "philosophy",
-    "forschung", "wissenschaft", "wissenschaftlich", "phd", "doktorat"
+    "it", "energy", "robotics", "marketing", "ml"
   ],
   "request_delay_seconds": 0.8
 }
