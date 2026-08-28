@@ -2,7 +2,11 @@ name: Check jobs (direct company sites sweep)
 
 on:
   schedule:
-    - cron: "43 */6 * * *"
+    # GitHub esegue gli schedule "best effort" e ne salta in silenzio una parte
+    # (osservato: circa meta' dei giri persi da fine agosto 2026). Schedulato
+    # ogni 2 ore invece di ogni 6 per compensare e garantire comunque una
+    # copertura reale di piu' controlli al giorno.
+    - cron: "43 */2 * * *"
   workflow_dispatch: {}
 
 permissions:
