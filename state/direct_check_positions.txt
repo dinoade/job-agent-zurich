@@ -1,5 +1,5 @@
-Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-08-28T16:42:59.384275+00:00)
-Totale: 4
+Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-08-28T16:46:16.229434+00:00)
+Totale: 3
 
 Deutsche Bank - We offer our Internship Programme across various business divisions and infrastructure areas.
   https://careers.db.com/students-graduates/internship-programme/
@@ -9,6 +9,3 @@ Zurich Insurance Group - NextGen Tech Internship Program
 
 Deutsche Bank - Dein Schul-, FOS- und Berufsorientierungs-Praktikum
   https://careers.db.com/Schuelerinnen/dein-schul-fos-und-berufsorientierungs-praktikum
-
-HSBC - GSC: Junior Product Controller - Intern
-  https://mycareer.hsbc.com/en_GB/external/PipelineDetail/GSC-Junior-Product-Controller-Intern/288672
