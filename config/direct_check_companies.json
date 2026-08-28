@@ -1,7 +1,15 @@
 [
   {
+    "name": "Aargauische Kantonalbank",
+    "careers_url": "https://www.akb.ch/de/karriere"
+  },
+  {
     "name": "Acano",
     "careers_url": "https://www.acano.ch/"
+  },
+  {
+    "name": "acrevis Bank AG",
+    "careers_url": "https://www.acrevis.ch/ueber-uns/karriere"
   },
   {
     "name": "AIG Europe S.A.",
@@ -34,6 +42,14 @@
   {
     "name": "Baader Helvea",
     "careers_url": "https://www.baaderbank.de/en/careers/work-at-baader-bank/overview-career"
+  },
+  {
+    "name": "Bank Avera Genossenschaft",
+    "careers_url": "https://bank-avera.ch"
+  },
+  {
+    "name": "Bank BSU Genossenschaft",
+    "careers_url": "https://www.bankbsu.ch"
   },
   {
     "name": "Bank Julius Bär",
@@ -124,6 +140,14 @@
     "careers_url": "https://www.equatex.com/en/careers/"
   },
   {
+    "name": "Ersparniskasse Schaffhausen AG",
+    "careers_url": "https://www.esk.ch"
+  },
+  {
+    "name": "Findependent AG",
+    "careers_url": "https://findependent.ch"
+  },
+  {
     "name": "Fisch Asset Management",
     "careers_url": "https://www.fam.ch/about-us/jobs/open-positions"
   },
@@ -164,6 +188,10 @@
     "careers_url": "https://helvetischebank.ch/uber-uns#karriere"
   },
   {
+    "name": "Hottinger, Gaultier & Partners AG",
+    "careers_url": "https://www.hottinger-gaultier.ch"
+  },
+  {
     "name": "HSBC",
     "careers_url": "https://mycareer.hsbc.com"
   },
@@ -174,6 +202,10 @@
   {
     "name": "Industrial and Commercial Bank of China",
     "careers_url": "https://www.icbcswiss.com/en/column/1438058394388152556.html"
+  },
+  {
+    "name": "Investec Bank (Switzerland) AG",
+    "careers_url": "https://www.investec.com/en_ch.html"
   },
   {
     "name": "ISP Securities",
@@ -220,6 +252,26 @@
     "careers_url": "https://www.morganstanley.com/careers"
   },
   {
+    "name": "Nomura Bank (Schweiz) AG",
+    "careers_url": "https://www.nomura.com/europe/careers/"
+  },
+  {
+    "name": "NPB Neue Privat Bank AG",
+    "careers_url": "https://www.npb-bank.ch/de"
+  },
+  {
+    "name": "ODDO BHF (Schweiz) AG",
+    "careers_url": "https://www.oddo-bhf.com"
+  },
+  {
+    "name": "Privatbank Bellerive AG",
+    "careers_url": "https://www.bellerivebanking.ch/en/career"
+  },
+  {
+    "name": "Private Client Bank AG",
+    "careers_url": "https://www.privateclientbank.ch/home/"
+  },
+  {
     "name": "Quantus",
     "careers_url": "https://quantus.ch/de/karriere"
   },
@@ -230,6 +282,10 @@
   {
     "name": "Rahn+Bodmer",
     "careers_url": "https://www.rahnbodmer.ch/de/karriere"
+  },
+  {
+    "name": "Raiffeisen Schweiz Genossenschaft",
+    "careers_url": "https://jobs.raiffeisen.ch/"
   },
   {
     "name": "Reuss Private",
@@ -244,6 +300,10 @@
     "careers_url": "https://www.rothschildandco.com/en/careers/"
   },
   {
+    "name": "Schaffhauser Kantonalbank",
+    "careers_url": "https://www.shkb.ch"
+  },
+  {
     "name": "Schroder & Co",
     "careers_url": "https://www.schroders.com/en-ch/ch/professional/about-us/careers/"
   },
@@ -254,6 +314,14 @@
   {
     "name": "Société Générale",
     "careers_url": "https://careers.societegenerale.com/"
+  },
+  {
+    "name": "Sparhafen Bank AG",
+    "careers_url": "https://sparhafen.ch"
+  },
+  {
+    "name": "St. Galler Kantonalbank AG",
+    "careers_url": "https://www.sgkb.ch/de/ueber-uns/karriere"
   },
   {
     "name": "State Street",
