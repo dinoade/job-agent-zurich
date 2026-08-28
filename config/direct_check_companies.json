@@ -20,6 +20,10 @@
     "careers_url": "https://allfunds.com/en/careers/"
   },
   {
+    "name": "Allianz Suisse",
+    "careers_url": "https://careers.allianz.com/ch/de"
+  },
+  {
     "name": "Alpha Leonis Partners AG",
     "careers_url": "https://www.alphaleonispartners.com/"
   },
@@ -38,6 +42,14 @@
   {
     "name": "AWP P&C S.A.",
     "careers_url": "https://careers.allianz.com/Schweiz/go/Allianz-Partners-Schweiz/5152101/"
+  },
+  {
+    "name": "AXA Switzerland",
+    "careers_url": "https://www.axa.ch/de/ueber-axa/jobs-karriere.html"
+  },
+  {
+    "name": "Axpo",
+    "careers_url": "https://careers.axpo.com/de-inf/jobs"
   },
   {
     "name": "Baader Helvea",
@@ -120,12 +132,28 @@
     "careers_url": "https://jobs.citi.com/location/switzerland-jobs/287/2658434/2"
   },
   {
+    "name": "Commerzbank",
+    "careers_url": "https://jobs.commerzbank.com/"
+  },
+  {
+    "name": "CONCORDIA",
+    "careers_url": "https://www.concordia.ch/de/ueber-uns/jobs/offene-stellen/lehrstellen-und-praktika.html"
+  },
+  {
     "name": "Crypto Finance",
     "careers_url": "https://www.crypto-finance.com/job-opportunities/"
   },
   {
+    "name": "CSS Versicherung",
+    "careers_url": "https://jobs.css.ch/"
+  },
+  {
     "name": "Deutsche Bank",
     "careers_url": "https://careers.db.com"
+  },
+  {
+    "name": "Die Mobiliar",
+    "careers_url": "https://www.mobiliar.ch/ueber-uns/karriere"
   },
   {
     "name": "DZ PRIVATBANK (Schweiz)",
@@ -156,6 +184,10 @@
     "careers_url": "https://www.frankfurter-bankgesellschaft.com/de/karriere"
   },
   {
+    "name": "Generali Switzerland",
+    "careers_url": "https://www.generali.ch/de/karriere"
+  },
+  {
     "name": "Globalance",
     "careers_url": "https://www.globalance.com/karriere/"
   },
@@ -182,6 +214,10 @@
   {
     "name": "Helbling Business Advisors AG",
     "careers_url": "https://helbling.ch/en/career/jobs"
+  },
+  {
+    "name": "Helvetia Versicherungen",
+    "careers_url": "https://jobs.helvetia.com/ch"
   },
   {
     "name": "Helvetische Bank",
@@ -300,6 +336,10 @@
     "careers_url": "https://www.rothschildandco.com/en/careers/"
   },
   {
+    "name": "Sanitas",
+    "careers_url": "https://www.sanitas.com/en/about-sanitas/career/vacancies.html"
+  },
+  {
     "name": "Schaffhauser Kantonalbank",
     "careers_url": "https://www.shkb.ch"
   },
@@ -328,8 +368,16 @@
     "careers_url": "https://careers.statestreet.com/"
   },
   {
+    "name": "SWICA",
+    "careers_url": "https://www.swica.ch/de/ueber-swica/jobs/warum-swica"
+  },
+  {
     "name": "Swiss Finance & Property",
     "careers_url": "https://www.sfp.ch/en/sfp-group/career"
+  },
+  {
+    "name": "Swiss Life",
+    "careers_url": "https://www.swisslife.ch/de/ueber-uns/karriere.html"
   },
   {
     "name": "Swiss Re",
@@ -338,6 +386,10 @@
   {
     "name": "Sygnum",
     "careers_url": "https://www.sygnum.com/careers-portal/"
+  },
+  {
+    "name": "Sympany",
+    "careers_url": "https://www.sympany.ch/en/about-us/jobs.html"
   },
   {
     "name": "The Corporate Finance Group (TCFG)",
@@ -364,8 +416,16 @@
     "careers_url": "https://www.vanlanschotkempen.com/en-ch/private-banking/careers"
   },
   {
+    "name": "Vaudoise Assurances",
+    "careers_url": "https://www.vaudoise.ch/de/karriere/offene-stellen"
+  },
+  {
     "name": "Verve Capital Partners",
     "careers_url": "https://www.verve.vc/join-our-team/"
+  },
+  {
+    "name": "Visana",
+    "careers_url": "https://jobs.visana.ch/"
   },
   {
     "name": "Vontobel Swiss Financial Advisers",
