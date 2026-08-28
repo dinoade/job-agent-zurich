@@ -1,11 +1,19 @@
 [
   {
+    "name": "Acano",
+    "careers_url": "https://www.acano.ch/"
+  },
+  {
     "name": "AIG Europe S.A.",
     "careers_url": "https://www.aig.ch/home/careers"
   },
   {
     "name": "Allfunds Bank S.A.",
     "careers_url": "https://allfunds.com/en/careers/"
+  },
+  {
+    "name": "Alpha Leonis Partners AG",
+    "careers_url": "https://www.alphaleonispartners.com/"
   },
   {
     "name": "AMINA Bank",
@@ -148,6 +156,10 @@
     "careers_url": "https://www.hdi.global/about-us/career-at-hdi/career-hdi-global-se/"
   },
   {
+    "name": "Helbling Business Advisors AG",
+    "careers_url": "https://helbling.ch/en/career/jobs"
+  },
+  {
     "name": "Helvetische Bank",
     "careers_url": "https://helvetischebank.ch/uber-uns#karriere"
   },
@@ -208,6 +220,10 @@
     "careers_url": "https://www.morganstanley.com/careers"
   },
   {
+    "name": "Quantus",
+    "careers_url": "https://quantus.ch/de/karriere"
+  },
+  {
     "name": "Quilvest (Switzerland)",
     "careers_url": "https://quilvest.ch/career/"
   },
@@ -254,6 +270,10 @@
   {
     "name": "Sygnum",
     "careers_url": "https://www.sygnum.com/careers-portal/"
+  },
+  {
+    "name": "The Corporate Finance Group (TCFG)",
+    "careers_url": "https://tcfg.ch"
   },
   {
     "name": "TradeXBank",

@@ -110,6 +110,18 @@ def clean_text(text: str) -> str:
     return re.sub(r"\s+", " ", text or "").strip()
 
 
+MAX_TITLE_LEN = 140
+
+
+def truncate_title(text: str) -> str:
+    """Alcuni siti wrappano un'intera card (titolo+descrizione+meta) in un
+    unico <a>: qui accorciamo per leggibilita', tagliando su uno spazio."""
+    if len(text) <= MAX_TITLE_LEN:
+        return text
+    cut = text[:MAX_TITLE_LEN].rsplit(" ", 1)[0]
+    return cut + "..."
+
+
 def job_id_for(url: str) -> str:
     return hashlib.sha1(url.strip().encode("utf-8")).hexdigest()[:16]
 
@@ -367,6 +379,7 @@ def main():
             if not domain_matches(title, name, settings):
                 continue
 
+            title = truncate_title(title)
             job_id = job_id_for(url)
             if job_id in seen_this_run:
                 continue
