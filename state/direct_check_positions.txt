@@ -1,5 +1,8 @@
-Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-08-28T16:25:01.011982+00:00)
-Totale: 3
+Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-08-28T16:42:59.384275+00:00)
+Totale: 4
+
+Deutsche Bank - We offer our Internship Programme across various business divisions and infrastructure areas.
+  https://careers.db.com/students-graduates/internship-programme/
 
 Zurich Insurance Group - NextGen Tech Internship Program
   https://www.zurich.com/careers/nextgen-tech

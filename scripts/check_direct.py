@@ -147,6 +147,8 @@ def try_workday_api(final_url: str) -> list:
 
 
 def scan_html_links(html: str, base_url: str) -> list:
+    """Caso classico: il titolo dell'annuncio E' il testo del link
+    (<a>Finance Intern</a>)."""
     soup = BeautifulSoup(html, "html.parser")
     results = []
     seen_urls = set()
@@ -167,13 +169,124 @@ def scan_html_links(html: str, base_url: str) -> list:
     return results
 
 
-def fetch_company_candidates(careers_url: str) -> list:
-    resp = requests.get(careers_url, headers=HEADERS, timeout=20, allow_redirects=True)
+LEAF_BLOCK_TAGS = ["p", "li", "h1", "h2", "h3", "h4", "h5", "h6", "dt", "dd", "td"]
+
+
+def scan_html_blocks(html: str, base_url: str) -> list:
+    """Caso comune sui siti WordPress/CMS: il titolo dell'annuncio e' testo
+    semplice in un blocco (es. <p><strong>Compliance Officer</strong></p>),
+    e il link vero e proprio ("Find more information here") sta in un
+    paragrafo SUCCESSIVO separato. scan_html_links da solo non lo trova
+    perche' il testo del link e' generico ("here"/"hier"/...), mai il
+    titolo. Qui si scansiona ogni blocco di testo "foglia" in ordine di
+    documento, e se non ha un link proprio si cerca il link nei blocchi
+    immediatamente successivi."""
+    soup = BeautifulSoup(html, "html.parser")
+    all_blocks = soup.find_all(LEAF_BLOCK_TAGS)
+    leaf_blocks = [b for b in all_blocks if not b.find(LEAF_BLOCK_TAGS)]
+
+    results = []
+    seen_urls = set()
+    n = len(leaf_blocks)
+    for i, block in enumerate(leaf_blocks):
+        text = clean_text(block.get_text(separator=" "))
+        if not text or len(text) < 8 or len(text) > 200:
+            continue
+        if text.lower() in NAV_TEXT_BLOCKLIST:
+            continue
+
+        href = None
+        a = block.find("a", href=True)
+        if a:
+            href = a["href"]
+        else:
+            for j in range(i + 1, min(i + 4, n)):
+                a2 = leaf_blocks[j].find("a", href=True)
+                if a2:
+                    href = a2["href"]
+                    break
+        if not href:
+            continue
+        href = href.strip()
+        if not href or href.startswith("#") or href.lower().startswith("javascript:"):
+            continue
+
+        url = urllib.parse.urljoin(base_url, href)
+        key = (text.lower(), url)
+        if key in seen_urls:
+            continue
+        seen_urls.add(key)
+        results.append({"title": text, "url": url})
+    return results
+
+
+# Molte pagine careers sono solo una landing page "chi siamo" con un link
+# verso la vera lista di annunci (spesso su un dominio diverso: Workday,
+# Personio, SmartRecruiters, JobCloud...). Se il testo del link somiglia a
+# uno di questi, la seguiamo (un livello soltanto) e scansioniamo anche
+# quella pagina.
+JOB_LISTING_LINK_HINTS = [
+    "stellenangebote", "offene stellen", "open positions", "open position",
+    "current openings", "job openings", "career opportunities", "vacancies",
+    "search jobs", "view jobs", "view all jobs", "browse jobs", "job search",
+    "unsere stellen", "aktuelle stellen", "stellenboerse", "stellenbörse",
+    "karriereportal", "jobportal", "job board", "all jobs", "alle stellen",
+    "praktikum", "praktika", "internship", "internships", "trainee",
+    "graduate program", "graduate programme", "students", "graduates",
+    "join us", "join our team", "work with us", "arbeiten bei",
+]
+
+
+def find_job_listing_link(html: str, base_url: str) -> str:
+    soup = BeautifulSoup(html, "html.parser")
+    for a in soup.find_all("a", href=True):
+        text = norm(clean_text(a.get_text(separator=" ")))
+        if not text:
+            continue
+        if any(hint in text for hint in JOB_LISTING_LINK_HINTS):
+            href = a["href"].strip()
+            if href and not href.startswith("#") and not href.lower().startswith("javascript:"):
+                return urllib.parse.urljoin(base_url, href)
+    return None
+
+
+def scan_page(url: str) -> tuple:
+    """Scarica una pagina e ne estrae i candidati con entrambi i metodi.
+    Ritorna (candidati, html, url_finale) per permettere di seguire un
+    eventuale link di secondo livello."""
+    resp = requests.get(url, headers=HEADERS, timeout=25, allow_redirects=True)
     resp.raise_for_status()
     workday_results = try_workday_api(resp.url)
     if workday_results:
-        return workday_results
-    return scan_html_links(resp.text, resp.url)
+        return workday_results, resp.text, resp.url
+
+    combined = []
+    seen_urls = set()
+    for cand in scan_html_links(resp.text, resp.url) + scan_html_blocks(resp.text, resp.url):
+        if cand["url"] in seen_urls:
+            continue
+        seen_urls.add(cand["url"])
+        combined.append(cand)
+    return combined, resp.text, resp.url
+
+
+def fetch_company_candidates(careers_url: str) -> list:
+    candidates, html, final_url = scan_page(careers_url)
+
+    listing_link = find_job_listing_link(html, final_url)
+    if listing_link and listing_link != final_url:
+        time.sleep(0.5)
+        try:
+            more_candidates, _, _ = scan_page(listing_link)
+        except requests.RequestException:
+            more_candidates = []
+        seen_urls = {c["url"] for c in candidates}
+        for cand in more_candidates:
+            if cand["url"] not in seen_urls:
+                seen_urls.add(cand["url"])
+                candidates.append(cand)
+
+    return candidates
 
 
 def write_positions_txt(seen: dict, generated_at: str):
@@ -196,10 +309,11 @@ def prune_stale_entries(seen: dict, settings: dict) -> dict:
     for job_id, m in seen.items():
         title = m.get("title", "")
         company = m.get("company", "")
+        url = m.get("url", "")
         ok = (
             role_matches(title, settings)
             and not role_excluded(title, settings)
-            and not has_non_swiss_location_hint(title)
+            and not has_non_swiss_location_hint(f"{title} {url}")
             and domain_matches(title, company, settings)
         )
         if ok:
@@ -245,7 +359,7 @@ def main():
                 continue
             if role_excluded(title, settings):
                 continue
-            if has_non_swiss_location_hint(title):
+            if has_non_swiss_location_hint(f"{title} {url}"):
                 continue
             if not domain_matches(title, name, settings):
                 continue

@@ -1,2 +1,3 @@
 - [2026-08-16T17:04:21.385916+00:00] **NextGen Tech Internship Program** — Zurich Insurance Group — https://www.zurich.com/careers/nextgen-tech
 - [2026-08-20T19:17:40.078939+00:00] **Banking Analyst Summer Internship Program 2027 Houston** — Barclays Capital — https://search.jobs.barclays/job/houston/banking-analyst-summer-internship-program-2027-houston/13015/89084599408
+- [2026-08-28T16:42:59.384275+00:00] **We offer our Internship Programme across various business divisions and infrastructure areas.** — Deutsche Bank — https://careers.db.com/students-graduates/internship-programme/
