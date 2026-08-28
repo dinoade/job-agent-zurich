@@ -64,14 +64,34 @@ NAV_TEXT_BLOCKLIST = {
 # chiave quando il testo del link menziona esplicitamente una sede estera
 # nota. Non esaustivo - solo riduzione rumore best-effort.
 NON_SWISS_LOCATION_HINTS = [
-    "frankfurt", "new york", "london", "paris", "milan", "milano", "madrid",
+    # Paesi/regioni (coprono molte citta' in un colpo solo)
+    "usa", "united states", "u.s.a", "united kingdom", "great britain",
+    "germany", "deutschland", "france", "italy", "italia", "spain", "espana",
+    "portugal", "poland", "polska", "ireland", "netherlands", "belgium",
+    "austria", "sweden", "denmark", "norway", "finland", "hungary", "greece",
+    "india", "china", "japan", "australia", "canada", "brazil", "mexico",
+    "russia", "turkey", "israel", "egypt", "nigeria", "south africa",
+    "saudi arabia", "qatar", "emirates", "indonesia", "philippines",
+    "vietnam", "thailand", "malaysia", "south korea", "argentina", "chile",
+    "colombia", "peru",
+    # Citta' - USA/Canada
+    "new york", "houston", "dallas", "austin", "san antonio", "charlotte",
+    "atlanta", "miami", "orlando", "tampa", "philadelphia", "washington dc",
+    "wilmington", "delaware", "boston", "chicago", "san francisco",
+    "los angeles", "seattle", "denver", "phoenix", "las vegas",
+    "minneapolis", "detroit", "pittsburgh", "columbus", "indianapolis",
+    "nashville", "st. louis", "kansas city", "salt lake city", "toronto",
+    "montreal", "vancouver", "calgary",
+    # Citta' - Europa/resto del mondo
+    "frankfurt", "london", "paris", "milan", "milano", "madrid",
     "singapore", "hong kong", "dubai", "tokyo", "mumbai", "warsaw", "dublin",
-    "luxembourg", "munich", "munchen", "berlin", "hamburg", "brussels",
-    "amsterdam", "toronto", "boston", "chicago", "san francisco", "los angeles",
-    "sydney", "melbourne", "shanghai", "beijing", "seoul", "mexico city",
-    "sao paulo", "johannesburg", "cairo", "riyadh", "doha", "abu dhabi",
+    "luxembourg", "munich", "munchen", "berlin", "hamburg", "cologne",
+    "brussels", "amsterdam", "rotterdam", "sydney", "melbourne", "brisbane",
+    "shanghai", "beijing", "shenzhen", "seoul", "mexico city",
+    "sao paulo", "rio de janeiro", "buenos aires", "johannesburg",
+    "cairo", "riyadh", "doha", "abu dhabi", "istanbul", "tel aviv",
     "stockholm", "copenhagen", "oslo", "helsinki", "vienna", "wien", "prague",
-    "budapest", "lisbon", "barcelona",
+    "budapest", "athens", "lisbon", "porto", "barcelona", "rome", "roma",
 ]
 
 
