@@ -12,3 +12,4 @@
 - [2026-08-28T22:15:21.064682+00:00] **Praktikum WMS/HMS - Vermittler und Partnerschaften 100% (August 2027)** — CSS Versicherung — https://jobs.css.ch/offene-stellen/praktikum-wms-hms-vermittler-und-partnerschaften-august-2027/e7e13afd-788b-45a8-9877-573ccfd25a54
 - [2026-08-28T22:15:21.064682+00:00] **Ein Praktikum bei der Vaudoise** — Vaudoise Assurances — https://www.vaudoise.ch/de/karriere/bei-der-vaudoise-arbeiten/studierende-lernende/ein-praktikum-bei-der-vaudoise
 - [2026-08-29T07:21:44.321306+00:00] **Surety Intern (Hybrid)** — Swiss Re — https://careers.swissre.com/job/Sao-Paulo-Surety-Intern-%28Hybrid%29-SP/1421484033/
+- [2026-08-30T05:47:21.481581+00:00] **Actuarial Portfolio Management Intern** — Swiss Re — https://careers.swissre.com/job/Sao-Paulo-Actuarial-Portfolio-Management-Intern-SP/1411465733/
