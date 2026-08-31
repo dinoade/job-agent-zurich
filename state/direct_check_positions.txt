@@ -1,5 +1,14 @@
-Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-08-31T00:48:39.963941+00:00)
-Totale: 14
+Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-08-31T08:53:23.183138+00:00)
+Totale: 17
+
+Migros Bank - Migros Bank Stage de maturité 3+1 Services & Administration - Fribourg ‧ 100% 1701 Fribourg Praktikum
+  https://jobs.migros.ch/fr/nos-entreprises/job/banque-migros/stage-de-maturite-31-services-administration-fribourg/ba68a5bf-c5a2-46f4-a2e5-d0b939e34451
+
+Migros Bank - Migros Bank Stage de maturité 3+1 Services & Administration - canton du Valais ‧ 100% 1951 Sion Praktikum
+  https://jobs.migros.ch/fr/nos-entreprises/job/banque-migros/stage-de-maturite-31-services-administration-canton-du-valais/d88a2062-3a5c-47e2-b469-9472ecabcc69
+
+Migros Bank - Migros Bank Stage de maturité 3+1 Services & Administration - Canton de Genève ‧ 100% 1204 Genf Praktikum
+  https://jobs.migros.ch/fr/nos-entreprises/job/banque-migros/stage-de-maturite-31-services-administration-canton-de-geneve/affc356d-9936-46bd-b3b6-b3630f26a882
 
 Swiss Re - Actuarial Portfolio Management Intern
   https://careers.swissre.com/job/Sao-Paulo-Actuarial-Portfolio-Management-Intern-SP/1411465733/
