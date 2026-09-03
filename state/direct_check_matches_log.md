@@ -25,3 +25,4 @@
 - [2026-09-01T11:59:00.998498+00:00] **Migros Bank BEM - Berufseinstieg nach Matura - St. Gallen ‧ 100% 9001 St. Gallen Praktikum** — Migros Bank — https://jobs.migros.ch/de/unsere-unternehmen/job/migros-bank/bem-berufseinstieg-nach-matura-st-gallen/da703e9a-da80-4204-a52e-999f7e421a2d
 - [2026-09-02T11:41:48.339501+00:00] **PST Core Intern** — Liberty Mutual Insurance — https://libertymutual1.avature.net/LibertyCareers/FolderDetail/PST-Core-Intern/21313
 - [2026-09-02T11:41:48.339501+00:00] **Share PST Core Intern with a friend via e-mail** — Liberty Mutual Insurance — mailto:?body=https://libertymutual1.avature.net/LibertyCareers/FolderDetail/PST-Core-Intern/21313
+- [2026-09-03T19:25:44.909850+00:00] **Sales, Trading and Structuring Off Cycle Internship Programme 2027 Zurich** — Barclays Capital — https://search.jobs.barclays/job/zurich/sales-trading-and-structuring-off-cycle-internship-programme-2027-zurich/13015/100128639456
