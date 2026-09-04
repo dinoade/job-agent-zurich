@@ -26,3 +26,4 @@
 - [2026-09-02T11:41:48.339501+00:00] **PST Core Intern** — Liberty Mutual Insurance — https://libertymutual1.avature.net/LibertyCareers/FolderDetail/PST-Core-Intern/21313
 - [2026-09-02T11:41:48.339501+00:00] **Share PST Core Intern with a friend via e-mail** — Liberty Mutual Insurance — mailto:?body=https://libertymutual1.avature.net/LibertyCareers/FolderDetail/PST-Core-Intern/21313
 - [2026-09-03T19:25:44.909850+00:00] **Sales, Trading and Structuring Off Cycle Internship Programme 2027 Zurich** — Barclays Capital — https://search.jobs.barclays/job/zurich/sales-trading-and-structuring-off-cycle-internship-programme-2027-zurich/13015/100128639456
+- [2026-09-04T05:03:17.313570+00:00] **Contracts P&C Intern** — Swiss Re — https://careers.swissre.com/job/Sao-Paulo-Contracts-P&C-Intern-SP/1413044433/
