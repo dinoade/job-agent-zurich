@@ -1,5 +1,11 @@
-Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-09-04T11:42:38.340044+00:00)
-Totale: 28
+Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-09-04T16:34:57.186479+00:00)
+Totale: 30
+
+Axpo - Software Developer Intern (f/m/d)
+  https://careers.axpo.com/jobs/8323870-software-developer-intern-f-m-d
+
+Axpo - Software Developer Intern (f/m/d)
+  https://careers.axpo.com/jobs/8323817-software-developer-intern-f-m-d
 
 Swiss Re - Contracts P&C Intern
   https://careers.swissre.com/job/Sao-Paulo-Contracts-P&C-Intern-SP/1413044433/
