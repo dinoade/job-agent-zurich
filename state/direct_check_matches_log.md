@@ -29,3 +29,6 @@
 - [2026-09-04T05:03:17.313570+00:00] **Contracts P&C Intern** — Swiss Re — https://careers.swissre.com/job/Sao-Paulo-Contracts-P&C-Intern-SP/1413044433/
 - [2026-09-04T16:34:57.186479+00:00] **Software Developer Intern (f/m/d)** — Axpo — https://careers.axpo.com/jobs/8323870-software-developer-intern-f-m-d
 - [2026-09-04T16:34:57.186479+00:00] **Software Developer Intern (f/m/d)** — Axpo — https://careers.axpo.com/jobs/8323817-software-developer-intern-f-m-d
+- [2026-09-05T00:21:48.368538+00:00] **2027 Compliance Analyst Summer Internship Program Whippany** — Barclays Capital — https://search.jobs.barclays/job/whippany/2027-compliance-analyst-summer-internship-program-whippany/13015/100189840608
+- [2026-09-05T00:21:48.368538+00:00] **2027 Technology Developer Summer Internship Program Whippany** — Barclays Capital — https://search.jobs.barclays/job/whippany/2027-technology-developer-summer-internship-program-whippany/13015/100189840496
+- [2026-09-05T00:21:48.368538+00:00] **2027 Operations Analyst Summer Internship Program Whippany** — Barclays Capital — https://search.jobs.barclays/job/whippany/2027-operations-analyst-summer-internship-program-whippany/13015/100189840416
