@@ -32,3 +32,5 @@
 - [2026-09-05T00:21:48.368538+00:00] **2027 Compliance Analyst Summer Internship Program Whippany** — Barclays Capital — https://search.jobs.barclays/job/whippany/2027-compliance-analyst-summer-internship-program-whippany/13015/100189840608
 - [2026-09-05T00:21:48.368538+00:00] **2027 Technology Developer Summer Internship Program Whippany** — Barclays Capital — https://search.jobs.barclays/job/whippany/2027-technology-developer-summer-internship-program-whippany/13015/100189840496
 - [2026-09-05T00:21:48.368538+00:00] **2027 Operations Analyst Summer Internship Program Whippany** — Barclays Capital — https://search.jobs.barclays/job/whippany/2027-operations-analyst-summer-internship-program-whippany/13015/100189840416
+- [2026-09-07T12:59:18.857462+00:00] **Intern Group Projects (w/m/d)** — Axpo — https://careers.axpo.com/de-inf/jobs/8330463-intern-group-projects-w-m-d
+- [2026-09-07T12:59:18.857462+00:00] **Praktikant/in Procurement Hydro & Biomasse (w/m/d)** — Axpo — https://careers.axpo.com/de-inf/jobs/8314179-praktikant-in-procurement-hydro-biomasse-w-m-d
