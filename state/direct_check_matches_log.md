@@ -34,3 +34,5 @@
 - [2026-09-05T00:21:48.368538+00:00] **2027 Operations Analyst Summer Internship Program Whippany** — Barclays Capital — https://search.jobs.barclays/job/whippany/2027-operations-analyst-summer-internship-program-whippany/13015/100189840416
 - [2026-09-07T12:59:18.857462+00:00] **Intern Group Projects (w/m/d)** — Axpo — https://careers.axpo.com/de-inf/jobs/8330463-intern-group-projects-w-m-d
 - [2026-09-07T12:59:18.857462+00:00] **Praktikant/in Procurement Hydro & Biomasse (w/m/d)** — Axpo — https://careers.axpo.com/de-inf/jobs/8314179-praktikant-in-procurement-hydro-biomasse-w-m-d
+- [2026-09-07T18:50:48.871995+00:00] **Intern Technology Monitoring – Generation IV Reactor Systems (f/m/d)** — Axpo — https://careers.axpo.com/jobs/8330419-intern-technology-monitoring-generation-iv-reactor-systems-f-m-d
+- [2026-09-07T18:50:48.871995+00:00] **Private Bank and Wealth Management Off Cycle Internship Programme 2027 Geneva** — Barclays Capital — https://search.jobs.barclays/job/geneva/private-bank-and-wealth-management-off-cycle-internship-programme-2027-geneva/13015/100305156864
