@@ -1,5 +1,14 @@
-Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-09-09T21:08:57.370811+00:00)
-Totale: 40
+Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-09-10T00:33:17.362847+00:00)
+Totale: 43
+
+Barclays Capital - 2027 Technology Developer Summer Internship Programme Glasgow
+  https://search.jobs.barclays/job/glasgow/2027-technology-developer-summer-internship-programme-glasgow/13015/100411087072
+
+Barclays Capital - 2027 Technology Developer Summer Internship Programme Northampton
+  https://search.jobs.barclays/job/northampton/2027-technology-developer-summer-internship-programme-northampton/13015/100411087040
+
+Barclays Capital - 2027 Technology Analyst Summer Internship Programme Glasgow
+  https://search.jobs.barclays/job/glasgow/2027-technology-analyst-summer-internship-programme-glasgow/13015/100411086864
 
 Barclays Capital - UK Corporate Banking Summer Internship Programme 2027 Birmingham
   https://search.jobs.barclays/job/birmingham/uk-corporate-banking-summer-internship-programme-2027-birmingham/13015/100032501056
