@@ -15,7 +15,10 @@
   "domain_keywords": [],
   "exclude_keywords": [
     "senior", "hr", "human resources", "ib", "investment banking",
-    "it", "energy", "robotics", "marketing", "ml"
+    "it", "energy", "robotics", "marketing", "ml",
+    "matura", "bem", "schüler", "schueler", "schülerpraktikum",
+    "schuelerpraktikum", "berufsorientierung", "berufsorientierungs",
+    "lehrstelle", "lehre", "gymnasium", "sekundarschule", "kantonsschule"
   ],
   "request_delay_seconds": 0.8
 }

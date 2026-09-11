@@ -1,41 +1,8 @@
-Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-09-11T11:46:11.492943+00:00)
-Totale: 47
-
-Barclays Capital - 2027 Retail, Business and Customer Banking Summer Internship Programme Manchester
-  https://search.jobs.barclays/job/greater-manchester/2027-retail-business-and-customer-banking-summer-internship-programme-manchester/13015/100411085920
-
-Barclays Capital - 2027 Retail, Business and Customer Banking Summer Internship Programme Knutsford
-  https://search.jobs.barclays/job/knutsford/2027-retail-business-and-customer-banking-summer-internship-programme-knutsford/13015/100411085744
-
-Barclays Capital - 2027 Retail, Business and Customer Banking Summer Internship Programme Northampton
-  https://search.jobs.barclays/job/northampton/2027-retail-business-and-customer-banking-summer-internship-programme-northampton/13015/100411084960
-
-Zuger Kantonalbank - Praktikum Bankeinstieg nach Matura (BEM)
-  https://www.zugerkb.ch/die-zugerkb/jobs-und-karriere/offene-stellen/job-beschrieb?JobDetail=SAEI1983-8
-
-Barclays Capital - 2027 Technology Developer Summer Internship Programme Glasgow
-  https://search.jobs.barclays/job/glasgow/2027-technology-developer-summer-internship-programme-glasgow/13015/100411087072
-
-Barclays Capital - 2027 Technology Developer Summer Internship Programme Northampton
-  https://search.jobs.barclays/job/northampton/2027-technology-developer-summer-internship-programme-northampton/13015/100411087040
-
-Barclays Capital - 2027 Technology Analyst Summer Internship Programme Glasgow
-  https://search.jobs.barclays/job/glasgow/2027-technology-analyst-summer-internship-programme-glasgow/13015/100411086864
-
-Barclays Capital - UK Corporate Banking Summer Internship Programme 2027 Birmingham
-  https://search.jobs.barclays/job/birmingham/uk-corporate-banking-summer-internship-programme-2027-birmingham/13015/100032501056
-
-Swiss Re - Business Intelligence and Data Science Intern (Student Job)
-  https://careers.swissre.com/job/Bratislava-Business-Intelligence-and-Data-Science-Intern-%28Student-Job%29/1435146333/
-
-Migros Bank - Migros Bank Stage BEM - Formation bancaire initiale - Lausanne/​Vaud ‧ 100% 1003 Lausanne Praktikum
-  https://jobs.migros.ch/fr/nos-entreprises/job/banque-migros/stage-bem-formation-bancaire-initiale-lausannevaud/eedef175-fc72-41d6-ac31-3cd9fa02dce7
+Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-09-11T14:33:03.405613+00:00)
+Totale: 20
 
 Axpo - Intern Technology Monitoring – Generation IV Reactor Systems (f/m/d)
   https://careers.axpo.com/jobs/8330419-intern-technology-monitoring-generation-iv-reactor-systems-f-m-d
-
-Barclays Capital - Private Bank and Wealth Management Off Cycle Internship Programme 2027 Geneva
-  https://search.jobs.barclays/job/geneva/private-bank-and-wealth-management-off-cycle-internship-programme-2027-geneva/13015/100305156864
 
 Axpo - Intern Group Projects (w/m/d)
   https://careers.axpo.com/de-inf/jobs/8330463-intern-group-projects-w-m-d
@@ -43,38 +10,17 @@ Axpo - Intern Group Projects (w/m/d)
 Axpo - Praktikant/in Procurement Hydro & Biomasse (w/m/d)
   https://careers.axpo.com/de-inf/jobs/8314179-praktikant-in-procurement-hydro-biomasse-w-m-d
 
-Barclays Capital - 2027 Compliance Analyst Summer Internship Program Whippany
-  https://search.jobs.barclays/job/whippany/2027-compliance-analyst-summer-internship-program-whippany/13015/100189840608
-
-Barclays Capital - 2027 Technology Developer Summer Internship Program Whippany
-  https://search.jobs.barclays/job/whippany/2027-technology-developer-summer-internship-program-whippany/13015/100189840496
-
-Barclays Capital - 2027 Operations Analyst Summer Internship Program Whippany
-  https://search.jobs.barclays/job/whippany/2027-operations-analyst-summer-internship-program-whippany/13015/100189840416
-
 Axpo - Software Developer Intern (f/m/d)
   https://careers.axpo.com/jobs/8323870-software-developer-intern-f-m-d
 
 Axpo - Software Developer Intern (f/m/d)
   https://careers.axpo.com/jobs/8323817-software-developer-intern-f-m-d
 
-Swiss Re - Contracts P&C Intern
-  https://careers.swissre.com/job/Sao-Paulo-Contracts-P&C-Intern-SP/1413044433/
-
 Barclays Capital - Sales, Trading and Structuring Off Cycle Internship Programme 2027 Zurich
   https://search.jobs.barclays/job/zurich/sales-trading-and-structuring-off-cycle-internship-programme-2027-zurich/13015/100128639456
 
 Liberty Mutual Insurance - PST Core Intern
   https://libertymutual1.avature.net/LibertyCareers/FolderDetail/PST-Core-Intern/21313
-
-Liberty Mutual Insurance - Share PST Core Intern with a friend via e-mail
-  mailto:?body=https://libertymutual1.avature.net/LibertyCareers/FolderDetail/PST-Core-Intern/21313
-
-Migros Bank - Migros Bank BEM - Berufseinstieg nach Matura - St. Gallen ‧ 100% 9001 St. Gallen Praktikum
-  https://jobs.migros.ch/de/unsere-unternehmen/job/migros-bank/bem-berufseinstieg-nach-matura-st-gallen/da703e9a-da80-4204-a52e-999f7e421a2d
-
-Migros Bank - Migros Bank Praktikum HMS/​WMS Dienstleistung & Administration - Luzern ‧ 100% 6002 Luzern Praktikum
-  https://jobs.migros.ch/de/unsere-unternehmen/job/migros-bank/praktikum-hmswms-dienstleistung-administration-luzern/af58289a-432e-4061-a762-e0bbe7f64ce9
 
 Migros Bank - Migros Bank Praktikum HMS/​WMS Dienstleistung & Administration - Baden ‧ 100% 5400 Baden Praktikum
   https://jobs.migros.ch/de/unsere-unternehmen/job/migros-bank/praktikum-hmswms-dienstleistung-administration-baden/95f2d037-b2dc-4124-8ceb-54c28fe47721
@@ -84,27 +30,6 @@ Migros Bank - Migros Bank Praktikum HMS/​WMS Dienstleistung & Administration -
 
 Migros Bank - Migros Bank Praktikum HMS/​WMS Dienstleistung & Administration - St. Gallen ‧ 100% 9001 St. Gallen Praktikum
   https://jobs.migros.ch/de/unsere-unternehmen/job/migros-bank/praktikum-hmswms-dienstleistung-administration-st-gallen/0e51b2f0-0ef2-410e-bb01-2cb72fa43f45
-
-Migros Bank - Migros Bank Stage de maturité 3+1 Services & Administration - Lausanne /​ Vaud ‧ 100% 1003 Lausanne Praktikum
-  https://jobs.migros.ch/fr/nos-entreprises/job/banque-migros/stage-de-maturite-31-services-administration-lausanne-vaud/99ecaf99-518a-4c03-a1d0-6f15cfd843e7
-
-Migros Bank - Migros Bank Stage de maturité 3+1 Services & Administration - Neuchâtel ‧ 100% 2000 Neuenburg Praktikum
-  https://jobs.migros.ch/fr/nos-entreprises/job/banque-migros/stage-de-maturite-31-services-administration-neuchatel/b85ee3b1-47b7-4148-88fa-93f8e899803d
-
-Migros Bank - Migros Bank Stage de maturité 3+1 Services & Administration - Fribourg ‧ 100% 1701 Fribourg Praktikum
-  https://jobs.migros.ch/fr/nos-entreprises/job/banque-migros/stage-de-maturite-31-services-administration-fribourg/ba68a5bf-c5a2-46f4-a2e5-d0b939e34451
-
-Migros Bank - Migros Bank Stage de maturité 3+1 Services & Administration - canton du Valais ‧ 100% 1951 Sion Praktikum
-  https://jobs.migros.ch/fr/nos-entreprises/job/banque-migros/stage-de-maturite-31-services-administration-canton-du-valais/d88a2062-3a5c-47e2-b469-9472ecabcc69
-
-Migros Bank - Migros Bank Stage de maturité 3+1 Services & Administration - Canton de Genève ‧ 100% 1204 Genf Praktikum
-  https://jobs.migros.ch/fr/nos-entreprises/job/banque-migros/stage-de-maturite-31-services-administration-canton-de-geneve/affc356d-9936-46bd-b3b6-b3630f26a882
-
-Swiss Re - Actuarial Portfolio Management Intern
-  https://careers.swissre.com/job/Sao-Paulo-Actuarial-Portfolio-Management-Intern-SP/1411465733/
-
-Swiss Re - Surety Intern (Hybrid)
-  https://careers.swissre.com/job/Sao-Paulo-Surety-Intern-%28Hybrid%29-SP/1421484033/
 
 Axpo - Intern Design Engineer / BIM Modeler (f/m/d)
   https://careers.axpo.com/jobs/8274149-intern-design-engineer-bim-modeler-f-m-d
@@ -130,14 +55,8 @@ Jefferies - Intern and Entry-Level Programs
 Rothschild & Co - Explore our Internship opportunities
   https://www.rothschildandco.com/en/careers/students-and-graduates/internships/
 
-Zuger Kantonalbank - Praktikum Bankeinstieg nach Matura (BEM)
-  https://www.zugerkb.ch/die-zugerkb/jobs-und-karriere/offene-stellen/job-beschrieb?JobDetail=SAEI1983-5
-
 Deutsche Bank - We offer our Internship Programme across various business divisions and infrastructure areas.
   https://careers.db.com/students-graduates/internship-programme/
 
 Zurich Insurance Group - NextGen Tech Internship Program
   https://www.zurich.com/careers/nextgen-tech
-
-Deutsche Bank - Dein Schul-, FOS- und Berufsorientierungs-Praktikum
-  https://careers.db.com/Schuelerinnen/dein-schul-fos-und-berufsorientierungs-praktikum

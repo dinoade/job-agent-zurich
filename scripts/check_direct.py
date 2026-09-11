@@ -73,7 +73,10 @@ NON_SWISS_LOCATION_HINTS = [
     "russia", "turkey", "israel", "egypt", "nigeria", "south africa",
     "saudi arabia", "qatar", "emirates", "indonesia", "philippines",
     "vietnam", "thailand", "malaysia", "south korea", "argentina", "chile",
-    "colombia", "peru",
+    "colombia", "peru", "slovakia", "bratislava", "romania", "bucharest",
+    "bulgaria", "sofia", "croatia", "zagreb", "serbia", "belgrade",
+    "ukraine", "kiev", "kyiv", "lithuania", "vilnius", "latvia", "riga",
+    "estonia", "tallinn", "slovenia", "ljubljana", "cyprus", "malta",
     # Citta' - USA/Canada
     "new york", "houston", "dallas", "austin", "san antonio", "charlotte",
     "atlanta", "miami", "orlando", "tampa", "philadelphia", "washington dc",
@@ -85,7 +88,7 @@ NON_SWISS_LOCATION_HINTS = [
     # Citta' - Europa/resto del mondo
     "frankfurt", "london", "paris", "milan", "milano", "madrid",
     "singapore", "hong kong", "dubai", "tokyo", "mumbai", "warsaw", "dublin",
-    "luxembourg", "munich", "munchen", "berlin", "hamburg", "cologne",
+    "luxembourg", "frabelux", "munich", "munchen", "berlin", "hamburg", "cologne",
     "brussels", "amsterdam", "rotterdam", "sydney", "melbourne", "brisbane",
     "shanghai", "beijing", "shenzhen", "seoul", "mexico city",
     "sao paulo", "rio de janeiro", "buenos aires", "johannesburg",
@@ -93,13 +96,30 @@ NON_SWISS_LOCATION_HINTS = [
     "stockholm", "copenhagen", "oslo", "helsinki", "vienna", "wien", "prague",
     "budapest", "athens", "lisbon", "porto", "barcelona", "rome", "roma",
     "monaco",  # Principato di Monaco (piazza finanziaria comune per private banking)
+    # Citta' - Regno Unito (molte aziende globali, es. Barclays, postano qui)
+    "manchester", "birmingham", "glasgow", "edinburgh", "leeds", "knutsford",
+    "northampton", "bristol", "liverpool", "cardiff", "belfast", "sheffield",
+    "nottingham", "leicester", "coventry", "bradford", "cambridge", "oxford",
+    "reading", "milton keynes", "southampton", "portsmouth", "canary wharf",
+    # Citta' USA aggiuntive
+    "whippany", "jersey city", "stamford", "newark", "hartford", "raleigh",
+    "tempe", "plano", "irving", "jacksonville", "sao paulo", "são paulo",
+    # Svizzera ma FUORI dalla zona target (cantoni diversi da ZH/ZG/SH/AG/SG)
+    "geneve", "genève", "geneva", "genf", "lausanne", "vaud", "basel", "bale",
+    "bâle", "bern", "berne", "luzern", "lucerne", "neuchatel", "neuchâtel",
+    "fribourg", "freiburg", "sion", "valais", "wallis", "lugano", "ticino",
+    "tessin", "bellinzona", "chur", "graubunden", "graubünden", "biel",
+    "bienne", "thun", "solothurn", "delemont", "delémont", "jura", "nyon",
+    "montreux", "vevey", "martigny", "yverdon", "sitten",
     # Sigle aziendali note per centri servizi offshore, mai in Svizzera
     "gsc",  # HSBC "Global Service Centre" (India/Polonia/Sri Lanka/Malesia)
 ]
 
 
 def has_non_swiss_location_hint(text: str) -> bool:
-    t = norm(text)
+    # Negli URL le citta' multi-parola sono spesso unite con un trattino
+    # (es. "Sao-Paulo") invece di uno spazio: normalizziamo prima di cercare.
+    t = norm(text).replace("-", " ")
     return any(re.search(r"\b" + re.escape(hint) + r"\b", t) for hint in NON_SWISS_LOCATION_HINTS)
 
 
@@ -174,7 +194,7 @@ def scan_html_links(html: str, base_url: str) -> list:
         if text.lower() in NAV_TEXT_BLOCKLIST:
             continue
         href = a["href"].strip()
-        if not href or href.startswith("#") or href.lower().startswith("javascript:"):
+        if not href or href.startswith("#") or href.lower().startswith(("javascript:", "mailto:", "tel:")):
             continue
         url = urllib.parse.urljoin(base_url, href)
         if url in seen_urls:
@@ -223,7 +243,7 @@ def scan_html_blocks(html: str, base_url: str) -> list:
         if not href:
             continue
         href = href.strip()
-        if not href or href.startswith("#") or href.lower().startswith("javascript:"):
+        if not href or href.startswith("#") or href.lower().startswith(("javascript:", "mailto:", "tel:")):
             continue
 
         url = urllib.parse.urljoin(base_url, href)
@@ -260,7 +280,7 @@ def find_job_listing_link(html: str, base_url: str) -> str:
             continue
         if any(hint in text for hint in JOB_LISTING_LINK_HINTS):
             href = a["href"].strip()
-            if href and not href.startswith("#") and not href.lower().startswith("javascript:"):
+            if href and not href.startswith("#") and not href.lower().startswith(("javascript:", "mailto:", "tel:")):
                 return urllib.parse.urljoin(base_url, href)
     return None
 
@@ -326,7 +346,8 @@ def prune_stale_entries(seen: dict, settings: dict) -> dict:
         company = m.get("company", "")
         url = m.get("url", "")
         ok = (
-            role_matches(title, settings)
+            not url.lower().startswith(("mailto:", "tel:", "javascript:"))
+            and role_matches(title, settings)
             and not role_excluded(title, settings)
             and not has_non_swiss_location_hint(f"{title} {url}")
             and domain_matches(title, company, settings)
