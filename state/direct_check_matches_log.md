@@ -47,3 +47,4 @@
 - [2026-09-10T16:39:12.378694+00:00] **2027 Retail, Business and Customer Banking Summer Internship Programme Northampton** — Barclays Capital — https://search.jobs.barclays/job/northampton/2027-retail-business-and-customer-banking-summer-internship-programme-northampton/13015/100411084960
 - [2026-09-10T16:39:12.378694+00:00] **Praktikum Bankeinstieg nach Matura (BEM)** — Zuger Kantonalbank — https://www.zugerkb.ch/die-zugerkb/jobs-und-karriere/offene-stellen/job-beschrieb?JobDetail=SAEI1983-8
 - [2026-09-11T14:17:27.271307+00:00] **Debt Capital Markets Analyst Intern — FIG FraBeLux** — Société Générale — https://careers.societegenerale.com/offres-d-emploi/debt-capital-markets-analyst-intern-fig-frabelux-26000JQ7-fr
+- [2026-09-16T07:53:43.276868+00:00] **HMS-Praktikant:in August 2027** — Swiss Re — https://careers.swissre.com/job/Zurich-HMS-Praktikantin-August-2027-Zuri/1427612533/
