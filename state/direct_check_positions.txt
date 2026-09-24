@@ -1,5 +1,11 @@
-Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-09-24T07:47:44.954986+00:00)
-Totale: 22
+Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-09-24T13:45:40.796305+00:00)
+Totale: 24
+
+Axpo - Praktikant/in Risikomanagement (w/m/d)
+  https://careers.axpo.com/de-inf/jobs/8448995-praktikant-in-risikomanagement-w-m-d
+
+Axpo - Intern Market Risk (f/m/d)
+  https://careers.axpo.com/jobs/8131209-intern-market-risk-f-m-d
 
 Leonteq Securities - Trading Internship Zurich
   https://careers.leonteq.com/?page=advertisement_display&id=1959

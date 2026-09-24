@@ -49,3 +49,5 @@
 - [2026-09-11T14:17:27.271307+00:00] **Debt Capital Markets Analyst Intern — FIG FraBeLux** — Société Générale — https://careers.societegenerale.com/offres-d-emploi/debt-capital-markets-analyst-intern-fig-frabelux-26000JQ7-fr
 - [2026-09-16T07:53:43.276868+00:00] **HMS-Praktikant:in August 2027** — Swiss Re — https://careers.swissre.com/job/Zurich-HMS-Praktikantin-August-2027-Zuri/1427612533/
 - [2026-09-22T12:01:11.981955+00:00] **Trading Internship Zurich** — Leonteq Securities — https://careers.leonteq.com/?page=advertisement_display&id=1959
+- [2026-09-24T13:45:40.796305+00:00] **Praktikant/in Risikomanagement (w/m/d)** — Axpo — https://careers.axpo.com/de-inf/jobs/8448995-praktikant-in-risikomanagement-w-m-d
+- [2026-09-24T13:45:40.796305+00:00] **Intern Market Risk (f/m/d)** — Axpo — https://careers.axpo.com/jobs/8131209-intern-market-risk-f-m-d
