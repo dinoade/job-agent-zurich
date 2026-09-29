@@ -52,3 +52,4 @@
 - [2026-09-24T13:45:40.796305+00:00] **Praktikant/in Risikomanagement (w/m/d)** — Axpo — https://careers.axpo.com/de-inf/jobs/8448995-praktikant-in-risikomanagement-w-m-d
 - [2026-09-24T13:45:40.796305+00:00] **Intern Market Risk (f/m/d)** — Axpo — https://careers.axpo.com/jobs/8131209-intern-market-risk-f-m-d
 - [2026-09-25T14:08:33.651911+00:00] **Internship - Corporate Banking, Intern, Gabon - Libreville 2026** — Citi — https://jobs.citi.com/job/libreville/internship-corporate-banking-intern-gabon-libreville-2026/287/94815471328
+- [2026-09-29T19:36:48.668946+00:00] **Captive Centre of Excellence Intern (Hybrid; m/f/x/d; 80-100%)** — Swiss Re — https://careers.swissre.com/job/Zurich-Captive-Centre-of-Excellence-Intern-%28Hybrid-mfxd-80-100%29-Zuri/1442458333/
