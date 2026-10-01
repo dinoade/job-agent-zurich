@@ -56,3 +56,4 @@
 - [2026-09-30T12:58:31.733369+00:00] **Praktikum Digital Adoption, Requirements & Rollout (m/w/d)** — Axpo — https://careers.axpo.com/de-inf/jobs/8448178-praktikum-digital-adoption-requirements-rollout-m-w-d
 - [2026-09-30T19:36:21.453510+00:00] **Intern im Bereich Corporate Finance, M&A, Perfor-mance Improvement & Turnaround (100%) Business Advisors Für das nächste Praktikum ab 01....** — Helbling Business Advisors AG — https://helbling.ch/en/career/jobs/1216-intern
 - [2026-09-30T19:36:21.453510+00:00] **Intern im Bereich Operations, Strategy & Digital Process Transformation (100%) Business Advisors Als Praktikantin oder Praktikant...** — Helbling Business Advisors AG — https://helbling.ch/en/career/jobs/1215-intern
+- [2026-10-01T13:51:29.305680+00:00] **Summer Internship 2027 - Early Talent** — Swiss Re — https://careers.swissre.com/job/Armonk-Summer-Internship-2027-Early-Talent-NY-10504/1443280433/
