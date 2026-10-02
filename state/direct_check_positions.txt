@@ -1,5 +1,8 @@
-Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-10-02T13:07:32.290512+00:00)
-Totale: 31
+Job Agent Zurigo - aziende dirette: scraper best-effort sui siti careers (aggiornato 2026-10-02T19:29:24.118059+00:00)
+Totale: 32
+
+BNP PARIBAS - Intern Fund Management (all genders)
+  https://www.bnpparibas.ch/en/jobs/intern-fund-management-all-genders/
 
 Swiss Re - Intern P&C Underwriting Transformation - Advance with AI (4-6 months; m/f/x/d; 80-100%)
   https://careers.swissre.com/job/Zurich-Intern-P&C-Underwriting-Transformation-Advance-with-AI-%284-6-months-mfxd-80-100%29-Zuri/1443368133/

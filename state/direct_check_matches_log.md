@@ -58,3 +58,4 @@
 - [2026-09-30T19:36:21.453510+00:00] **Intern im Bereich Operations, Strategy & Digital Process Transformation (100%) Business Advisors Als Praktikantin oder Praktikant...** — Helbling Business Advisors AG — https://helbling.ch/en/career/jobs/1215-intern
 - [2026-10-01T13:51:29.305680+00:00] **Summer Internship 2027 - Early Talent** — Swiss Re — https://careers.swissre.com/job/Armonk-Summer-Internship-2027-Early-Talent-NY-10504/1443280433/
 - [2026-10-01T19:47:04.995593+00:00] **Intern P&C Underwriting Transformation - Advance with AI (4-6 months; m/f/x/d; 80-100%)** — Swiss Re — https://careers.swissre.com/job/Zurich-Intern-P&C-Underwriting-Transformation-Advance-with-AI-%284-6-months-mfxd-80-100%29-Zuri/1443368133/
+- [2026-10-02T19:29:24.118059+00:00] **Intern Fund Management (all genders)** — BNP PARIBAS — https://www.bnpparibas.ch/en/jobs/intern-fund-management-all-genders/
